@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eric Leite · Estratégia organizacional e design de soluções</title>
+<meta name="description" content="Design de soluções e estratégia organizacional para sistemas complexos. Pensamento sistêmico, foresight e dados: leio a organização como um sistema vivo e desenho o que a faz funcionar, e continuar funcionando sem mim.">
+<meta property="og:title" content="Eric Leite · Estratégia organizacional e design de soluções">
+<meta property="og:description" content="Pensamento sistêmico aplicado: diagnóstico, estratégia e soluções para problemas complexos, com método que fica quando eu saio.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0b0b0a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230b0b0a'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='26' fill='%23f5f3ee' text-anchor='middle'%3EEL%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="lock">
+
+<!-- cursor (bolinha) -->
+<div id="cursor" aria-hidden="true"><span class="cursor-tag"></span></div>
+
+<!-- ============================================================
+     LOADER · tela de abertura
+     ============================================================ -->
+<div id="loader" class="blueprint" role="presentation">
+  <div class="loader-top">
+    <span class="cota">portfólio ©2026</span>
+    <span class="cota">extrema, mg · são paulo</span>
+  </div>
+  <div class="loader-center">
+    <div id="loader-name" aria-label="Eric Leite">
+      <span class="ln"><span>Eric</span></span>
+      <span class="ln"><span>Leite</span></span>
+    </div>
+    <p id="loader-manifesto" aria-hidden="true"></p>
+  </div>
+  <div class="loader-bottom">
+    <span class="cota">carregando o sistema</span>
+    <span id="loader-pct">000 %</span>
+  </div>
+  <div id="loader-bar"><i></i></div>
+</div>
+
+<!-- ============================================================
+     NAVEGAÇÃO
+     ============================================================ -->
+<nav id="nav" aria-label="Principal">
+  <a class="brand" href="#inicio" aria-label="Eric Leite, voltar ao início">
+    <span class="brand-mark">EL</span>
+    <span class="brand-txt">
+      <span class="brand-name">Eric Leite</span><br>
+      <span class="brand-sub">estratégia organizacional · design de soluções</span>
+    </span>
+  </a>
+  <div class="nav-links">
+    <a class="nav-link" href="#inicio">Início</a>
+    <a class="nav-link" href="#trabalhos">Trabalhos</a>
+    <a class="nav-link" href="#repertorio">Repertório</a>
+    <a class="nav-link" href="#sobre">Sobre</a>
+    <a class="nav-link" href="#contato">Contato</a>
+  </div>
+  <button id="burger" aria-label="Abrir menu"><i></i><i></i></button>
+</nav>
+
+<div id="mobile-menu" aria-label="Menu">
+  <a href="#inicio"><span>Início</span><span class="idx">01</span></a>
+  <a href="#trabalhos"><span>Trabalhos</span><span class="idx">02</span></a>
+  <a href="#repertorio"><span>Repertório</span><span class="idx">03</span></a>
+  <a href="#sobre"><span>Sobre</span><span class="idx">04</span></a>
+  <a href="#contato"><span>Contato</span><span class="idx">05</span></a>
+</div>
+
+<main>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section id="inicio" class="blueprint" aria-label="Apresentação">
+  <canvas id="field-canvas" data-cursor="intervir"></canvas>
+
+  <div class="hero-inner">
+    <div class="hero-kicker rv">
+      <span class="dot" aria-hidden="true"></span>
+      <span class="cota">estratégia organizacional · design de soluções · aberto a conversas</span>
+    </div>
+
+    <h1 id="hero-headline">
+      <span class="fit-line thin">Toda organização</span>
+      <span class="fit-line">é um sistema</span>
+      <span class="fit-line em">complexo.</span>
+    </h1>
+
+    <p class="hero-sub rv">
+      Pessoas, fluxos, decisões e o que ninguém mapeou.
+      <strong>Eu leio esse sistema inteiro e desenho a estratégia e as soluções que o fazem funcionar</strong>,
+      e continuar funcionando sem mim. 28 anos de carreira, 10 em transformações de escala:
+      banco, aviação, beleza, mineração, seguros.
+    </p>
+
+    <div class="hero-ctas rv">
+      <a class="btn btn-solid" href="#trabalhos">Ver os estudos <span class="arr">→</span></a>
+      <a class="btn btn-ghost" href="#sobre">Como eu penso</a>
+    </div>
+  </div>
+
+  <div class="field-hint" aria-hidden="true">
+    <span class="dotline"></span>
+    <span>mova o cursor: pequena intervenção, efeito no sistema inteiro</span>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true">
+    <span class="line"></span>
+    <span>scroll</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     TRABALHOS
+     ============================================================ -->
+<section id="trabalhos" class="on-light" data-bar="light" aria-label="Trabalhos selecionados">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="cota">trabalhos selecionados</span>
+      <span class="cota">06 estudos</span>
+    </div>
+    <p class="sec-intro rv">
+      Estudos apresentados por setor, com número no lugar de adjetivo.
+      Nomes, referências e o detalhe de cada história: numa conversa.
+    </p>
+
+    <div class="case-grid">
+
+      <article class="case-card rv" data-case="adquirencia" tabindex="0" role="button" aria-label="Abrir estudo: do acompanhamento manual ao Pix no prazo">
+        <div class="case-fig">
+          <svg viewBox="0 0 320 190" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+            <path d="M28 158 H 292" opacity=".5"/>
+            <path d="M28 158 V 30" opacity=".5"/>
+            <rect x="48"  y="128" width="18" height="30" opacity=".55"/>
+            <rect x="78"  y="112" width="18" height="46" opacity=".6"/>
+            <rect x="108" y="118" width="18" height="40" opacity=".6"/>
+            <rect x="138" y="94"  width="18" height="64" opacity=".7"/>
+            <rect x="168" y="78"  width="18" height="80" opacity=".75"/>
+            <rect x="198" y="84"  width="18" height="74" opacity=".75"/>
+            <rect x="228" y="56"  width="18" height="102" opacity=".85"/>
+            <path d="M50 120 C 110 118, 170 84, 244 46" stroke="#7d97ff" stroke-width="1.6"/>
+            <path d="M236 42 l 10 2 -4 9" stroke="#7d97ff" stroke-width="1.6"/>
+            <rect x="216" y="18" width="76" height="20" opacity=".9"/>
+            <text x="254" y="31" font-family="JetBrains Mono, monospace" font-size="8" fill="currentColor" stroke="none" text-anchor="middle" letter-spacing="1">PIX NO PRAZO</text>
+            <text x="288" y="172" font-family="JetBrains Mono, monospace" font-size="8" fill="currentColor" stroke="none" text-anchor="end" opacity=".6">t →</text>
+          </svg>
+          <span class="cota fig-cota">fig. 01 · fluxo e previsibilidade</span>
+        </div>
+        <div class="case-meta">
+          <span class="cota on-light">adquirência · banco líder</span>
+          <span class="cota on-light">2020 a 2021</span>
+        </div>
+        <h3 class="case-title">Do acompanhamento manual ao Pix no prazo</h3>
+        <p class="case-line">Zero métrica no ponto de partida. Indicadores de 7 tribos, planejamento integrado com 3 ARTs e a entrega regulatória mais vigiada do país, sem atraso.</p>
+        <span class="case-open">Ler o estudo <span class="arr">→</span></span>
+      </article>
+
+      <article class="case-card rv" data-case="fidelidade" tabindex="0" role="button" aria-label="Abrir estudo: 60% da mudança em 5 meses">
+        <div class="case-fig">
+          <svg viewBox="0 0 320 190" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+            <path d="M36 150 H 130 A 16 16 0 0 0 146 134 V 96 A 16 16 0 0 1 162 80 H 250" stroke-dasharray="3 6" opacity=".7"/>
+            <rect x="28" y="142" width="16" height="16" opacity=".8"/>
+            <rect x="92" y="142" width="16" height="16" opacity=".6"/>
+            <rect x="138" y="104" width="16" height="16" opacity=".6"/>
+            <rect x="196" y="72" width="16" height="16" opacity=".6"/>
+            <rect x="244" y="72" width="16" height="16" stroke="#7d97ff"/>
+            <circle cx="252" cy="80" r="2" fill="#7d97ff" stroke="none"/>
+            <rect x="52" y="34" width="34" height="34" rx="4" opacity=".8"/>
+            <circle cx="61" cy="43" r="1.6" fill="currentColor" stroke="none"/>
+            <circle cx="77" cy="43" r="1.6" fill="currentColor" stroke="none"/>
+            <circle cx="69" cy="51" r="1.6" fill="currentColor" stroke="none"/>
+            <circle cx="61" cy="59" r="1.6" fill="currentColor" stroke="none"/>
+            <circle cx="77" cy="59" r="1.6" fill="currentColor" stroke="none"/>
+            <path d="M180 148 H 292" opacity=".5"/>
+            <path d="M180 148 H 247" stroke="#7d97ff" stroke-width="3"/>
+            <text x="180" y="166" font-family="JetBrains Mono, monospace" font-size="8" fill="currentColor" stroke="none" opacity=".7">60% EM 5 MESES</text>
+          </svg>
+          <span class="cota fig-cota">fig. 02 · mudança como conquista</span>
+        </div>
+        <div class="case-meta">
+          <span class="cota on-light">aviação · fidelidade</span>
+          <span class="cota on-light">2021 a 2022</span>
+        </div>
+        <h3 class="case-title">60% da mudança em 5 meses, sem impor nada</h3>
+        <p class="case-line">Gamificação para gestão de mudanças em 2 tribos de produtos digitais, radar autoral reportado ao comitê executivo e um caso que virou palestra no TDC 2022.</p>
+        <span class="case-open">Ler o estudo <span class="arr">→</span></span>
+      </article>
+
+      <article class="case-card rv" data-case="pd-beleza" tabindex="0" role="button" aria-label="Abrir estudo: fluxo unificado no P&D">
+        <div class="case-fig">
+          <svg viewBox="0 0 320 190" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+            <path d="M30 50 C 90 50, 110 92, 160 95" opacity=".55"/>
+            <path d="M30 95 C 80 95, 120 95, 160 95" opacity=".7"/>
+            <path d="M30 140 C 90 140, 110 98, 160 95" opacity=".55"/>
+            <path d="M160 95 H 288" stroke="#7d97ff" stroke-width="2.4"/>
+            <circle cx="30" cy="50" r="3" fill="currentColor" stroke="none" opacity=".7"/>
+            <circle cx="30" cy="95" r="3" fill="currentColor" stroke="none" opacity=".7"/>
+            <circle cx="30" cy="140" r="3" fill="currentColor" stroke="none" opacity=".7"/>
+            <circle cx="160" cy="95" r="4" stroke="#7d97ff"/>
+            <path d="M262 60 l 3.5 8 8.5 1 -6 6 1.5 8.5 -7.5 -4 -7.5 4 1.5 -8.5 -6 -6 8.5 -1 z" opacity=".85"/>
+            <text x="176" y="82" font-family="JetBrains Mono, monospace" font-size="8" fill="currentColor" stroke="none" opacity=".7">FLUXO UNIFICADO</text>
+            <text x="176" y="120" font-family="JetBrains Mono, monospace" font-size="8" fill="#7d97ff" stroke="none">+80% PREVISIBILIDADE</text>
+          </svg>
+          <span class="cota fig-cota">fig. 03 · operação autorregulada</span>
+        </div>
+        <div class="case-meta">
+          <span class="cota on-light">beleza · multinacional</span>
+          <span class="cota on-light">2022</span>
+        </div>
+        <h3 class="case-title">Fluxo Unificado: o P&D que se autorregula</h3>
+        <p class="case-line">Do braço financeiro à perfumaria: 7 frentes, +80% de previsibilidade no desenvolvimento de produtos e um trabalho premiado no Agile Trends 2024.</p>
+        <span class="case-open">Ler o estudo <span class="arr">→</span></span>
+      </article>
+
+      <article class="case-card rv" data-case="dados-industria" tabindex="0" role="button" aria-label="Abrir estudo: o programa que estava travado havia 2 anos">
+        <div class="case-fig">
+          <svg viewBox="0 0 320 190" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+            <rect x="34" y="76" width="26" height="26" opacity=".8"/>
+            <rect x="34" y="110" width="26" height="26" opacity=".8"/>
+            <path d="M78 95 H 150" stroke="#7d97ff" stroke-width="1.6"/>
+            <path d="M143 90 l 8 5 -8 5" stroke="#7d97ff" stroke-width="1.6"/>
+            <g opacity=".85">
+              <rect x="176" y="42" width="24" height="24"/><rect x="208" y="42" width="24" height="24"/><rect x="240" y="42" width="24" height="24"/>
+              <rect x="176" y="74" width="24" height="24"/><rect x="208" y="74" width="24" height="24"/><rect x="240" y="74" width="24" height="24"/>
+              <rect x="176" y="106" width="24" height="24"/><rect x="208" y="106" width="24" height="24"/><rect x="240" y="106" width="24" height="24"/>
+            </g>
+            <text x="34" y="62" font-family="JetBrains Mono, monospace" font-size="8" fill="currentColor" stroke="none" opacity=".7">2 EQUIPES</text>
+            <text x="176" y="152" font-family="JetBrains Mono, monospace" font-size="8" fill="currentColor" stroke="none" opacity=".7">9 SQUADS DE DADOS</text>
+            <text x="34" y="166" font-family="JetBrains Mono, monospace" font-size="8" fill="#7d97ff" stroke="none">LEAD TIME -65%</text>
+          </svg>
+          <span class="cota fig-cota">fig. 04 · blueprint 2 → 9</span>
+        </div>
+        <div class="case-meta">
+          <span class="cota on-light">mineração e petroquímica · dados</span>
+          <span class="cota on-light">2022 a 2024</span>
+        </div>
+        <h3 class="case-title">O programa que estava travado havia 2 anos</h3>
+        <p class="case-line">Onde 4 consultorias falharam: inventário de 14 decisões empilhadas, primeira entrega validada em 6 meses e o desenho que escalou dados de 2 para 9 squads.</p>
+        <span class="case-open">Ler o estudo <span class="arr">→</span></span>
+      </article>
+
+      <article class="case-card rv" data-case="programas-nacionais" tabindex="0" role="button" aria-label="Abrir estudo: de zero organização a 100% com baseline">
+        <div class="case-fig">
+          <svg viewBox="0 0 320 190" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+            <g opacity=".6">
+              <path d="M40 40 h 14 M60 40 h 14 M80 40 h 14 M100 40 h 14 M120 40 h 14 M140 40 h 14 M160 40 h 14 M180 40 h 14 M200 40 h 14 M220 40 h 14 M240 40 h 14 M260 40 h 14"/>
+              <path d="M52 54 h 14 M76 54 h 14 M100 54 h 14 M124 54 h 14 M148 54 h 14 M172 54 h 14 M196 54 h 14 M220 54 h 14 M244 54 h 14"/>
+              <path d="M76 68 h 14 M108 68 h 14 M140 68 h 14 M172 68 h 14 M204 68 h 14 M236 68 h 14"/>
+            </g>
+            <path d="M40 84 L 132 128 M280 84 L 188 128" opacity=".5"/>
+            <path d="M136 128 h 48 M126 140 h 68 M136 152 h 48" stroke="#7d97ff" stroke-width="1.6"/>
+            <text x="40" y="32" font-family="JetBrains Mono, monospace" font-size="8" fill="currentColor" stroke="none" opacity=".7">99 FERRAMENTAS</text>
+            <text x="160" y="174" font-family="JetBrains Mono, monospace" font-size="8" fill="#7d97ff" stroke="none" text-anchor="middle">21 · BASELINE EM 100%</text>
+          </svg>
+          <span class="cota fig-cota">fig. 05 · racionalização</span>
+        </div>
+        <div class="case-meta">
+          <span class="cota on-light">terceiro setor · programas nacionais</span>
+          <span class="cota on-light">2023 a 2024</span>
+        </div>
+        <h3 class="case-title">De zero organização a 100% com baseline</h3>
+        <p class="case-line">Programas com o governo federal, times pelo Brasil inteiro e nenhuma gestão de projetos. Saída: baseline estatística em tudo, lead time -30% e NPS interno +73%.</p>
+        <span class="case-open">Ler o estudo <span class="arr">→</span></span>
+      </article>
+
+      <article class="case-card rv" data-case="seguros-saude" tabindex="0" role="button" aria-label="Abrir estudo: a wiki que virou agente">
+        <div class="case-fig">
+          <svg viewBox="0 0 320 190" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+            <rect x="58" y="55" width="64" height="80" opacity=".85"/>
+            <path d="M68 70 h 44 M68 82 h 44 M68 94 h 44 M68 106 h 30" opacity=".6"/>
+            <path d="M122 75 C 170 60, 190 48, 226 44" opacity=".55"/>
+            <path d="M122 95 C 170 95, 190 95, 226 95" opacity=".55"/>
+            <path d="M122 115 C 170 130, 190 142, 226 146" opacity=".55"/>
+            <circle cx="238" cy="44" r="9" stroke="#7d97ff"/>
+            <circle cx="238" cy="95" r="9" stroke="#7d97ff"/>
+            <circle cx="238" cy="146" r="9" stroke="#7d97ff"/>
+            <circle cx="238" cy="44" r="2.4" fill="#7d97ff" stroke="none"/>
+            <circle cx="238" cy="95" r="2.4" fill="#7d97ff" stroke="none"/>
+            <circle cx="238" cy="146" r="2.4" fill="#7d97ff" stroke="none"/>
+            <path d="M258 44 h 20 M258 95 h 20 M258 146 h 20" opacity=".4" stroke-dasharray="2 4"/>
+            <text x="58" y="160" font-family="JetBrains Mono, monospace" font-size="8" fill="currentColor" stroke="none" opacity=".7">WIKI → AGENTES DE IA</text>
+            <text x="58" y="44" font-family="JetBrains Mono, monospace" font-size="8" fill="currentColor" stroke="none" opacity=".7">54 TIMES OUVIDOS</text>
+          </svg>
+          <span class="cota fig-cota">fig. 06 · conhecimento que opera</span>
+        </div>
+        <div class="case-meta">
+          <span class="cota on-light">seguros e saúde · previdência</span>
+          <span class="cota on-light">2024 até hoje</span>
+        </div>
+        <h3 class="case-title">A wiki que virou agente</h3>
+        <p class="case-line">Design organizacional com foresight numa seguradora: 9 frentes, nova operação desenhada com 54 times e uma base de conhecimento que nasceu pronta para IA.</p>
+        <span class="case-open">Ler o estudo <span class="arr">→</span></span>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     REPERTÓRIO
+     ============================================================ -->
+<section id="repertorio" class="blueprint" aria-label="Repertório">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="cota">repertório · as lentes que carrego</span>
+      <span class="cota">06 domínios</span>
+    </div>
+    <p class="sec-intro rv" style="color: var(--muted-dark);">
+      Não é caixa de ferramentas: é um jeito de olhar. Seis lentes que se combinam
+      para tratar problemas complexos, os que não têm resposta pronta.
+    </p>
+
+    <div class="rep-grid rv-stagger">
+      <article class="rep-card">
+        <span class="rep-plus" aria-hidden="true"></span>
+        <span class="rep-n">01</span>
+        <h3>Pensamento Sistêmico</h3>
+        <div class="rep-tags"><span>Interconexões</span><span>Causalidade Circular</span><span>Pontos de Alavancagem</span></div>
+        <p class="rep-desc">Ver a organização como um sistema vivo: mapear interdependências e loops de realimentação, e achar o ponto onde uma intervenção pequena reorganiza o todo. O sintoma quase nunca está onde dói.</p>
+      </article>
+
+      <article class="rep-card">
+        <span class="rep-plus" aria-hidden="true"></span>
+        <span class="rep-n">02</span>
+        <h3>Estratégia &amp; Futuros</h3>
+        <div class="rep-tags"><span>Strategic Foresight</span><span>Cenários</span><span>Desdobramento</span></div>
+        <p class="rep-desc">Trazer o amanhã para a decisão de hoje: varredura de sinais fracos, cenários e mapa estratégico que liga visão a execução sem se perder no meio do caminho.</p>
+      </article>
+
+      <article class="rep-card">
+        <span class="rep-plus" aria-hidden="true"></span>
+        <span class="rep-n">03</span>
+        <h3>Design Organizacional</h3>
+        <div class="rep-tags"><span>Cadeia de Valor</span><span>Estrutura &amp; Papéis</span><span>Governança</span></div>
+        <p class="rep-desc">Desenhar como a organização decide e entrega, da estratégia à operação: fluxo no lugar de silo, critério no lugar de improviso, decisão com dono e alçada clara.</p>
+      </article>
+
+      <article class="rep-card">
+        <span class="rep-plus" aria-hidden="true"></span>
+        <span class="rep-n">04</span>
+        <h3>Design de Soluções</h3>
+        <div class="rep-tags"><span>Diagnóstico Funcional</span><span>Discovery</span><span>Prototipagem</span></div>
+        <p class="rep-desc">Do problema difuso à solução testável: diagnóstico antes do primeiro traço, cliente no centro e protótipos validados no mundo real, não no slide.</p>
+      </article>
+
+      <article class="rep-card">
+        <span class="rep-plus" aria-hidden="true"></span>
+        <span class="rep-n">05</span>
+        <h3>Dados &amp; Métricas</h3>
+        <div class="rep-tags"><span>Baseline</span><span>Indicadores de Fluxo</span><span>Decisão por Evidência</span></div>
+        <p class="rep-desc">Transformar operação sem gestão visível em sistema mensurável: da zero métrica à previsibilidade estatística, com indicadores que a própria equipe aprende a ler.</p>
+      </article>
+
+      <article class="rep-card">
+        <span class="rep-plus" aria-hidden="true"></span>
+        <span class="rep-n">06</span>
+        <h3>IA Aplicada</h3>
+        <div class="rep-tags"><span>Agentes &amp; Skills</span><span>Orquestração</span><span>Contratos de Qualidade</span></div>
+        <p class="rep-desc">IA com engenharia de verdade: skills versionadas em repositório, agentes que se complementam e base de conhecimento pronta para operar. Não é prompt solto, é sistema.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SOBRE
+     ============================================================ -->
+<section id="sobre" class="blueprint" aria-label="Sobre">
+  <div class="wrap">
+    <div class="cota cota-rule rv">sobre · como eu penso</div>
+
+    <div class="sobre-grid">
+      <div class="sobre-txt rv-stagger">
+        <p class="tese">O problema raramente são as pessoas. É como a empresa está organizada.</p>
+        <p>Passei a vida entrando em sistemas por dentro: fábricas, empresas, comunidades.
+           Em todos, vi a mesma coisa: <strong>gente boa presa em desenho ruim.</strong></p>
+        <p>Meu trabalho é pensamento sistêmico aplicado: enxergar a organização como um todo vivo,
+           com interdependências, loops de realimentação e efeitos que aparecem longe da causa.
+           <strong>O sintoma quase nunca está onde dói.</strong></p>
+        <p>Trato problemas complexos, os que não têm resposta pronta, com quatro lentes que raramente
+           andam juntas: <strong>pensamento sistêmico, foresight formalizado</strong> (Master em Strategic
+           Foresight, ESPM), <strong>design de soluções e dados</strong>. Diagnóstico antes do traço;
+           estratégia que vira operação.</p>
+        <p>Meu modelo é habilitar e sair: formo facilitadores internos, deixo método e métrica.
+           <strong>Meu resultado é o que continua funcionando sem mim.</strong></p>
+      </div>
+
+      <figure class="portrait rv">
+        <img src="assets/img/eric.jpg" alt="Eric Leite">
+        <span class="ph" aria-hidden="true">
+          <svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="10" y="10" width="180" height="220" stroke-dasharray="4 6" opacity=".5"/>
+            <circle cx="100" cy="92" r="34"/>
+            <path d="M48 210 C 48 160, 152 160, 152 210"/>
+            <path d="M100 10 V 26 M100 214 V 230 M10 120 H 26 M174 120 H 190" opacity=".5"/>
+          </svg>
+          <span class="cota">foto: assets/img/eric.jpg</span>
+        </span>
+        <figcaption class="cota">eric leite · estratégia e design organizacional</figcaption>
+      </figure>
+    </div>
+
+    <!-- Resultados e impactos -->
+    <div class="cota cota-rule rv" style="margin-top: clamp(3.5rem, 9vh, 6rem);">resultados e impactos · números com lastro</div>
+    <div class="stats rv-stagger">
+      <div class="stat">
+        <span class="num"><span data-count="80" data-prefix="+" data-suffix="%">0%</span></span>
+        <span class="lbl">previsibilidade de entregas</span>
+        <span class="ctx">o mesmo método, em dois setores: P&D de beleza e squads de dados de mineração</span>
+      </div>
+      <div class="stat">
+        <span class="num"><span data-count="-65" data-suffix="%">0%</span></span>
+        <span class="lbl">lead time em programa de dados</span>
+        <span class="ctx">projeto que estava 2 anos travado; itens críticos caíram 80%</span>
+      </div>
+      <div class="stat">
+        <span class="num"><span data-count="21" data-count-start="99">99</span> <small>de 99</small></span>
+        <span class="lbl">ferramentas após racionalização</span>
+        <span class="ctx">benchmark de mercado e corte orientado a uso real, em programas nacionais</span>
+      </div>
+      <div class="stat">
+        <span class="num"><span data-count="60" data-suffix="%">0%</span></span>
+        <span class="lbl">da transformação em 5 meses</span>
+        <span class="ctx">gestão de mudanças com gamificação; caso apresentado no TDC 2022</span>
+      </div>
+      <div class="stat">
+        <span class="num">3 ARTs · 12 squads</span>
+        <span class="lbl">planejamento integrado em banco</span>
+        <span class="ctx">programa com ~160 pessoas e o Pix entregue no prazo do BACEN</span>
+      </div>
+      <div class="stat">
+        <span class="num"><span data-count="54">0</span> times</span>
+        <span class="lbl">ouvidos antes do primeiro traço</span>
+        <span class="ctx">cadeia de valor mapeada para desenhar uma nova operação em seguros</span>
+      </div>
+    </div>
+
+    <!-- A carreira em atos -->
+    <div class="atos rv">
+      <div class="cota cota-rule" style="margin-bottom: 1.5rem;">a carreira em 4 atos · 1998 até hoje</div>
+      <div class="ato">
+        <span class="n">ato 01<br>1998 a 2008</span>
+        <span class="t">Ferramentaria e produto</span>
+        <span class="d">Moldes e engenharia reversa: <em>64 itens em 6 meses para a Mercedes-Benz.</em> O território vivido: fábrica de verdade.</span>
+      </div>
+      <div class="ato">
+        <span class="n">ato 02<br>2009 a 2019</span>
+        <span class="t">Sistemas de engenharia</span>
+        <span class="d">Voith e TE Connectivity: PLM, lean e transformação digital. <em>Innovation Award 2016, 220+ pessoas treinadas, 55% menos tempo de simulação.</em> A descoberta: o gargalo nunca era o software, era o desenho da organização em volta dele.</span>
+      </div>
+      <div class="ato">
+        <span class="n">ato 03<br>2019 a 2023</span>
+        <span class="t">Lean e agilidade em escala</span>
+        <span class="d">Banco, varejo, aviação, beleza, lácteos, mineração. <em>Times de zero métrica a previsibilidade estatística</em>, formando quem fica com o método.</span>
+      </div>
+      <div class="ato">
+        <span class="n">ato 04<br>2023 até hoje</span>
+        <span class="t">Design organizacional + foresight</span>
+        <span class="d">A síntese: estruturas desenhadas para o que vem. <em>Master em Strategic Foresight (ESPM)</em>, frente de futuros em seguros, agentes de IA com contratos de qualidade.</span>
+      </div>
+    </div>
+
+    <!-- Organizações e clientes -->
+    <div class="orgs rv">
+      <div class="cota cota-rule" style="margin-bottom: 1.5rem;">organizações e clientes · onde o método passou</div>
+      <div class="org-row"><span class="o">Seguros Unimed</span><span class="y">2024 · hoje</span><span class="s">Saúde e previdência, via consultoria própria: design organizacional e futuros</span></div>
+      <div class="org-row"><span class="o">FIA Business School (USP)</span><span class="y">2022 · hoje</span><span class="s">Docência: gestão de produtos para profissionais da B3, 5 turmas</span></div>
+      <div class="org-row"><span class="o">SOFTEX</span><span class="y">2023 · 2024</span><span class="s">Terceiro setor: governança de portfólio para programas nacionais</span></div>
+      <div class="org-row"><span class="o">Google Brasil</span><span class="y">2023</span><span class="s">Facilitação do planejamento anual com o time comercial</span></div>
+      <div class="org-row"><span class="o">Vale e Braskem</span><span class="y">2022 · 2024</span><span class="s">Mineração e petroquímica, via Infosys: programas de dados e turnaround</span></div>
+      <div class="org-row"><span class="o">Natura &amp;Co</span><span class="y">2022 · 2023</span><span class="s">Beleza: P&D, ESG e inovação, em 2 ciclos de trabalho</span></div>
+      <div class="org-row"><span class="o">Piracanjuba</span><span class="y">2022 · 2023</span><span class="s">Lácteos: de piloto Kanban a gestão de portfólio completa</span></div>
+      <div class="org-row"><span class="o">Smiles · GOL</span><span class="y">2021 · 2022</span><span class="s">Fidelidade e aviação: 2 tribos de produtos digitais, discovery autoral</span></div>
+      <div class="org-row"><span class="o">BNY Mellon</span><span class="y">2021</span><span class="s">Banco global de investimentos: migração de ferramentas, reporte Brasil e NY</span></div>
+      <div class="org-row"><span class="o">Rede · Itaú Unibanco</span><span class="y">2020 · 2021</span><span class="s">Adquirência: centro de excelência, métricas de fluxo, planejamento integrado</span></div>
+      <div class="org-row"><span class="o">Grupo Carrefour Brasil</span><span class="y">2019 · 2020</span><span class="s">Varejo: primeiras squads multidisciplinares do TI, OKRs e service design</span></div>
+      <div class="org-row"><span class="o">TE Connectivity</span><span class="y">2014 · 2019</span><span class="s">Fortune 500: PMO interno, lean e transformação digital da engenharia</span></div>
+      <div class="org-row"><span class="o">Voith</span><span class="y">2009 · 2014</span><span class="s">Energia e papel, Américas e Alemanha: sistemas de engenharia e PLM</span></div>
+      <div class="org-row"><span class="o">Bepo</span><span class="y">2007 · 2009</span><span class="s">Componentes automotivos: Projeto Estrela (Mercedes-Benz, GM, Peugeot)</span></div>
+      <div class="org-row"><span class="o">Siemens PLM</span><span class="y">2006 · 2007</span><span class="s">Software de engenharia: GM, ThyssenKrupp, Petrobras</span></div>
+      <div class="org-row"><span class="o">TDraw</span><span class="y">1998 · 2006</span><span class="s">Moldes de injeção e engenharia reversa: onde tudo começou</span></div>
+    </div>
+
+    <!-- Reconhecimentos -->
+    <div class="recon rv">
+      <div class="cota cota-rule" style="margin-bottom: 1.5rem;">reconhecimentos e provas públicas</div>
+      <div class="recon-grid">
+        <div class="recon-item"><span class="n">01</span><span class="t"><strong>Prêmio Agile Trends 2024</strong> · Fluxo Unificado no P&D da Natura</span></div>
+        <div class="recon-item"><span class="n">02</span><span class="t"><strong>Innovation Award</strong> · TE Connectivity, planta South America, 2016</span></div>
+        <div class="recon-item"><span class="n">03</span><span class="t"><strong>Capítulo publicado</strong> · "Desdobramento Estratégico", no livro Jornada Colaborativa: Ágil em Escala</span></div>
+        <div class="recon-item"><span class="n">04</span><span class="t"><strong>Docência FIA/USP</strong> · 250+ profissionais da B3 formados em gestão de produtos</span></div>
+        <div class="recon-item"><span class="n">05</span><span class="t"><strong>TDC 2022</strong> · palestra "Gestão de Mudanças com Gamificação"</span></div>
+        <div class="recon-item"><span class="n">06</span><span class="t"><strong>Newsletter BIA, the insightful</strong> · 2.220 assinantes; vieses cognitivos e decisão</span></div>
+        <div class="recon-item"><span class="n">07</span><span class="t"><strong>Mentoria internacional</strong> · ADPList, mentorados em 5 países</span></div>
+        <div class="recon-item"><span class="n">08</span><span class="t"><strong>13,4 mil seguidores</strong> · LinkedIn, com 32 recomendações recebidas</span></div>
+      </div>
+    </div>
+
+    <!-- Vozes -->
+    <div class="vozes rv-stagger">
+      <div class="voz">
+        <blockquote>"Ele é o mestre dos métodos ágeis, orquestrando a transformação do caos em harmonia. É o GPS que te leva do backlog ao sucesso."</blockquote>
+        <cite>Charles Tavares · Project Manager, programa de dados</cite>
+      </div>
+      <div class="voz">
+        <blockquote>"Sua atuação, além de agregar muito ao nosso trabalho, nos permitiu explorar novos modelos e com isso obtivemos muito valor."</blockquote>
+        <cite>Rodrigo Cabral · Enterprise Agile Coach, Natura</cite>
+      </div>
+      <div class="voz">
+        <blockquote>"Um líder nato, com presença de palco forte e capacidade excepcional de comunicar visões e expectativas com clareza e entusiasmo."</blockquote>
+        <cite>Luis Altero · Data &amp; Analytics Engineer</cite>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     RADAR · interlúdio de futuros
+     ============================================================ -->
+<section id="radar" aria-label="Radar de futuros">
+  <div id="radar-host">
+    <canvas id="radar-canvas" aria-hidden="true"></canvas>
+    <div class="radar-caption">
+      <p class="big rv">Sinais fracos viram cenários. Cenários viram decisão. O amanhã como insumo de engenharia, não como adivinhação.</p>
+      <span class="small rv">radar de futuros · h1 h2 h3</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTATO
+     ============================================================ -->
+<section id="contato" class="on-light" data-bar="light" aria-label="Contato">
+  <div class="wrap">
+    <div class="cota cota-rule rv" style="margin-bottom: 2.5rem;">contato · próxima conversa</div>
+    <p class="contato-kicker rv">Um desenho de organização que não para em pé, um portfólio que não anda,
+       um cenário que ninguém quer encarar: <strong>o ponto que ninguém calculou costuma aparecer na primeira conversa.</strong></p>
+    <h2 class="contato-title rv">Vamos conversar?</h2>
+    <a class="email-link rv" href="mailto:engenharia.eric@gmail.com" data-cursor="escrever">engenharia.eric@gmail.com</a>
+    <div class="contato-links rv-stagger">
+      <a href="https://www.linkedin.com/in/leiteeric/" target="_blank" rel="noopener noreferrer">LinkedIn <span class="arr">↗</span></a>
+      <a href="https://wa.me/5511984568861" target="_blank" rel="noopener noreferrer">WhatsApp <span class="arr">↗</span></a>
+      <a href="mailto:engenharia.eric@gmail.com">E-mail <span class="arr">↗</span></a>
+    </div>
+    <p class="contato-loc cota on-light rv">extrema, mg · atuação híbrida em são paulo · remoto para o mundo</p>
+  </div>
+</section>
+
+</main>
+
+<footer data-bar="light">
+  <div class="wrap foot-row">
+    <span class="cota">©2026 eric leite · pensamento sistêmico aplicado a estratégia e organizações</span>
+    <a id="to-top" class="cota" href="#inicio">voltar pro topo ↑</a>
+  </div>
+</footer>
+
+<!-- ============================================================
+     OVERLAY DO ESTUDO DE CASO
+     ============================================================ -->
+<div id="overlay" role="dialog" aria-modal="true" aria-label="Estudo de caso">
+  <div id="overlay-progress"><i></i></div>
+  <div class="overlay-head">
+    <span class="cota">estudo de caso · <span id="overlay-case-label"></span></span>
+    <span class="cota" aria-hidden="true">seção: <span id="overlay-section-label">resumo</span></span>
+    <button id="overlay-close">Fechar ✕</button>
+  </div>
+  <div id="overlay-scroll"></div>
+</div>
+
+<!-- ============================================================
+     CONTEÚDO DOS ESTUDOS (templates)
+     ============================================================ -->
+
+<template id="case-adquirencia">
+  <article class="case-article">
+    <header class="case-head">
+      <div class="cota cota-rule on-light">estudo 01 · adquirência e meios de pagamento</div>
+      <h1>Do acompanhamento manual ao Pix no prazo</h1>
+      <p class="case-standfirst">Um dos maiores bancos de adquirência do país, em plena pandemia:
+        nenhuma métrica de fluxo, acompanhamento manual e um marco regulatório nacional no horizonte.
+        Regulatório não aceita atraso.</p>
+      <div class="case-facts">
+        <div><span class="cota on-light">setor</span><span class="v">Meios de pagamento · banco líder</span></div>
+        <div><span class="cota on-light">período</span><span class="v">2020 a 2021</span></div>
+        <div><span class="cota on-light">papel</span><span class="v">Lean Agile Coach, no centro de excelência</span></div>
+      </div>
+    </header>
+
+    <h2 data-sec="destaques"><span class="h-idx">01</span>Destaques</h2>
+    <table class="case-table">
+      <thead><tr><th>Indicador</th><th>Valor</th></tr></thead>
+      <tbody>
+        <tr><td>Time-to-Delivery na diretoria de produtos digitais</td><td class="val">+30%</td></tr>
+        <tr><td>Riscos mapeados e reduzidos</td><td class="val">-60%</td></tr>
+        <tr><td>Tribos com indicadores de fluxo (antes: zero)</td><td class="val">7</td></tr>
+        <tr><td>Escala do programa ao final</td><td class="val">3 ARTs · 12 squads · ~160 pessoas</td></tr>
+        <tr><td>Entrega regulatória (Pix) no prazo do BACEN</td><td class="val">1 marco nacional</td></tr>
+      </tbody>
+    </table>
+
+    <h2 data-sec="contexto"><span class="h-idx">02</span>Contexto</h2>
+    <p>Atuei no centro de excelência de agilidade do banco, como parceiro de 2 diretorias e do
+       portfólio: 130 pessoas no meu escopo direto, 11 times sob cuidado próximo, nas tribos que
+       formam o coração transacional da adquirência e os produtos digitais.</p>
+    <p>O ambiente: regulado pelo Banco Central, remoto da noite para o dia por causa da pandemia,
+       e com o Pix na fila de entrega.</p>
+
+    <h2 data-sec="problema"><span class="h-idx">03</span>O problema</h2>
+    <p>Não havia métrica nenhuma. O acompanhamento era manual, feito na conversa e na planilha.
+       Sem dado, cada decisão de priorização virava queda de braço, e o planejamento prometia
+       o que a capacidade não sustentava.</p>
+
+    <h2 data-sec="abordagem"><span class="h-idx">04</span>A abordagem</h2>
+    <ul>
+      <li><strong>Métricas de fluxo do zero, ancoradas na estratégia do banco:</strong> previsibilidade,
+          equilíbrio do sistema e visão de risco, para todas as ~7 tribos, com dashboards executivos.</li>
+      <li><strong>Planejamento integrado em ondas trimestrais:</strong> portfólio, arquitetura e diretoria
+          de produtos digitais na mesma sala (virtual), conectando estratégia, prioridade e capacidade.
+          O método foi adaptado para funcionar 100% remoto, com ~160 pessoas.</li>
+      <li><strong>Corte deliberado de trabalho em andamento:</strong> menos WIP, folga explícita no sistema.
+          Planejamento que se cumpre é planejamento que respeita capacidade.</li>
+      <li><strong>Radar de maturidade dos times:</strong> primeira geração de uma ferramenta autoral que
+          depois evoluiu em mais 2 empresas.</li>
+      <li><strong>Trabalho em par com os gestores:</strong> capacitação de superintendentes e gerentes,
+          para o método ficar quando a consultoria sai.</li>
+    </ul>
+
+    <h2 data-sec="resultados"><span class="h-idx">05</span>Resultados</h2>
+    <p>A diretoria de produtos digitais ganhou <strong>+30% de Time-to-Delivery</strong> e reduziu
+       <strong>60% dos riscos</strong>. O programa cresceu durante a passagem: de 2 para 3 ARTs,
+       de 9 para 12 squads. E a entrega mais vigiada do país, o <strong>Pix, saiu no prazo do BACEN</strong>,
+       junto com as demais obrigações regulatórias.</p>
+    <div class="case-quote">Planejamento sem folga não é plano, é promessa. Cortei WIP para criar
+       folga deliberada: foi isso que fez o prazo regulatório caber na capacidade real.</div>
+
+    <h2 data-sec="o que fica"><span class="h-idx">06</span>O que fica</h2>
+    <p>Cultura de decisão por dado onde antes havia planilha manual: indicadores vivos nas 7 tribos,
+       gestores treinados para lê-los e um planejamento integrado que virou rito da casa.</p>
+  </article>
+</template>
+
+<template id="case-fidelidade">
+  <article class="case-article">
+    <header class="case-head">
+      <div class="cota cota-rule on-light">estudo 02 · aviação e fidelidade</div>
+      <h1>60% da mudança em 5 meses, sem impor nada</h1>
+      <p class="case-standfirst">No programa de fidelidade de uma companhia aérea, a transformação
+         precisava vencer resistência cultural. A resposta não foi mandato: foi jogo.</p>
+      <div class="case-facts">
+        <div><span class="cota on-light">setor</span><span class="v">Aviação · programa de fidelidade</span></div>
+        <div><span class="cota on-light">período</span><span class="v">2021 a 2022</span></div>
+        <div><span class="cota on-light">papel</span><span class="v">Enterprise Agile Coach</span></div>
+      </div>
+    </header>
+
+    <h2 data-sec="destaques"><span class="h-idx">01</span>Destaques</h2>
+    <table class="case-table">
+      <thead><tr><th>Indicador</th><th>Valor</th></tr></thead>
+      <tbody>
+        <tr><td>Transformação organizacional viabilizada por gamificação</td><td class="val">60% em 5 meses</td></tr>
+        <tr><td>Equipes treinadas em métodos ágeis</td><td class="val">80%</td></tr>
+        <tr><td>Tribos de produtos digitais em atuação direta</td><td class="val">2 (~12 equipes)</td></tr>
+        <tr><td>Reporte executivo</td><td class="val">radar autoral ao Comex</td></tr>
+        <tr><td>Reconhecimento externo</td><td class="val">palestra no TDC 2022</td></tr>
+      </tbody>
+    </table>
+
+    <h2 data-sec="contexto"><span class="h-idx">02</span>Contexto</h2>
+    <p>Duas tribos de produtos digitais, ~12 equipes: uma cuidando do inventário aéreo, outra do
+       universo do viajante, com parcerias, prêmios, hotéis, milhas e pontos. E-commerce de viagem
+       de alto volume, com times de produto, tecnologia e design lado a lado.</p>
+
+    <h2 data-sec="problema"><span class="h-idx">03</span>O problema</h2>
+    <p>A agilidade precisava sair do discurso e virar operação, mas mudança imposta gera teatro de
+       conformidade: os ritos acontecem, o comportamento não muda. O desafio era adoção genuína,
+       medível e sustentada, num prazo que o negócio aceitasse.</p>
+
+    <h2 data-sec="abordagem"><span class="h-idx">04</span>A abordagem</h2>
+    <ul>
+      <li><strong>Desenho autoral do processo de Discovery:</strong> do zero ao padrão replicado pelas squads,
+          junto com Delivery Flow e Catálogo de Produtos como espinha da governança.</li>
+      <li><strong>Gamificação da mudança:</strong> a adesão virou percurso com fases, conquistas e
+          placar visível por equipe. Ninguém foi obrigado a nada; o jogo tornou o progresso desejável.</li>
+      <li><strong>Capacitação em massa:</strong> 80% das equipes treinadas em Kanban, Scrum, OKRs e
+          inceptions, com mentoria do chapter de gestão de produtos.</li>
+      <li><strong>Radar de mudança ao comitê executivo:</strong> segunda geração da ferramenta autoral,
+          medindo comportamento observado, não checklist de prática.</li>
+      <li><strong>Hub de conhecimento vivo:</strong> biblioteca ágil com trilhas por papel, para a
+          operação aprender sozinha depois da saída.</li>
+    </ul>
+
+    <h2 data-sec="resultados"><span class="h-idx">05</span>Resultados</h2>
+    <p><strong>60% da transformação concluída em 5 meses</strong>, com o comitê executivo acompanhando a
+       evolução por comportamento, não por status report. O caso virou a palestra
+       "Gestão de Mudanças com Gamificação" no TDC 2022.</p>
+    <div class="case-quote">Adoção não se impõe. Se conquista. O placar do jogo fez cada equipe
+       querer a próxima fase da mudança.</div>
+
+    <h2 data-sec="o que fica"><span class="h-idx">06</span>O que fica</h2>
+    <p>Processo de discovery com autoria, catálogo de produtos e um comitê executivo que aprendeu a
+       enxergar transformação por evidência de comportamento. O método segue documentado no hub.</p>
+  </article>
+</template>
+
+<template id="case-pd-beleza">
+  <article class="case-article">
+    <header class="case-head">
+      <div class="cota cota-rule on-light">estudo 03 · beleza e bem-estar</div>
+      <h1>Fluxo Unificado: o P&amp;D que se autorregula</h1>
+      <p class="case-standfirst">Numa multinacional de cosméticos, o desenvolvimento de produtos
+         rodava em áreas independentes, cada uma com seu ritmo e sua fila invisível.
+         O trabalho premiado nasceu de uma pergunta: e se a operação enxergasse o próprio fluxo?</p>
+      <div class="case-facts">
+        <div><span class="cota on-light">setor</span><span class="v">Beleza · multinacional de cosméticos</span></div>
+        <div><span class="cota on-light">período</span><span class="v">2022, com 2º ciclo em 2023</span></div>
+        <div><span class="cota on-light">papel</span><span class="v">Lean Agile Coach · P&amp;D e frentes corporativas</span></div>
+      </div>
+    </header>
+
+    <h2 data-sec="destaques"><span class="h-idx">01</span>Destaques</h2>
+    <table class="case-table">
+      <thead><tr><th>Indicador</th><th>Valor</th></tr></thead>
+      <tbody>
+        <tr><td>Previsibilidade de entregas com gestão de riscos</td><td class="val">+80%</td></tr>
+        <tr><td>Frentes atendidas, do braço financeiro à perfumaria</td><td class="val">7</td></tr>
+        <tr><td>Lideranças na Semana da Inovação (3 marcas)</td><td class="val">200</td></tr>
+        <tr><td>Reconhecimento</td><td class="val">Prêmio Agile Trends 2024</td></tr>
+      </tbody>
+    </table>
+
+    <h2 data-sec="contexto"><span class="h-idx">02</span>Contexto</h2>
+    <p>Atuação transversal rara: do planejamento estratégico do braço financeiro aos carros-chefes
+       de perfumaria, passando por expansão internacional, inteligência de mercado, sustentabilidade
+       e OKRs em uma das marcas do grupo. O centro de gravidade foi o P&amp;D, onde nasceu o caso premiado.</p>
+
+    <h2 data-sec="problema"><span class="h-idx">03</span>O problema</h2>
+    <p>Áreas de desenvolvimento independentes entre si, sem visão comum de portfólio, sem gestão
+       integrada de riscos e sem previsibilidade. Cada área otimizava a própria fila; o produto
+       atravessava todas elas.</p>
+
+    <h2 data-sec="abordagem"><span class="h-idx">04</span>A abordagem</h2>
+    <ul>
+      <li><strong>Fluxo Unificado no P&amp;D:</strong> projetos, entregas e iniciativas num único sistema
+          de fluxo, com pioneirismo de ferramenta dedicada na companhia.</li>
+      <li><strong>Operação autorregulada por dados:</strong> a própria área passou a ler seus indicadores
+          e corrigir curso, sem depender de cobrança externa.</li>
+      <li><strong>Planejamento integrado entre gente, inovação e gestão</strong>, com diagnósticos
+          sistêmicos nas áreas de perfumaria: alavancas de mudança, não sintomas.</li>
+      <li><strong>Inovação instrumentada na frente de sustentabilidade:</strong> ferramentas práticas e
+          agendas difíceis facilitadas até o consenso, incluindo créditos de carbono.</li>
+      <li><strong>Semana da Inovação para 200 lideranças</strong> das 3 marcas do grupo, em formato híbrido.</li>
+    </ul>
+
+    <h2 data-sec="resultados"><span class="h-idx">05</span>Resultados</h2>
+    <p><strong>+80% de previsibilidade de entregas</strong> com gestão de riscos incorporada ao dia a dia.
+       O caso virou referência interna e recebeu o <strong>Prêmio Agile Trends 2024</strong>. A frente de
+       sustentabilidade evoluiu para um segundo ciclo dedicado em 2023: desenho do time de inovação
+       da agenda 2030 e da gestão do ecossistema de startups.</p>
+    <div class="case-quote">Quando a operação enxerga o próprio fluxo, ela se corrige sozinha.
+       O prêmio foi consequência.</div>
+
+    <h2 data-sec="o que fica"><span class="h-idx">06</span>O que fica</h2>
+    <p>Um P&amp;D que decide com dado, um sistema de fluxo que sobreviveu à consultoria e uma
+       definição prática de inovação na agenda de sustentabilidade, com time desenhado para sustentá-la.</p>
+  </article>
+</template>
+
+<template id="case-dados-industria">
+  <article class="case-article">
+    <header class="case-head">
+      <div class="cota cota-rule on-light">estudo 04 · mineração e petroquímica</div>
+      <h1>O programa que estava travado havia 2 anos</h1>
+      <p class="case-standfirst">Um projeto estratégico de logística em dados, 4 consultorias
+         anteriores sem entrega, bases fragmentadas e um time que só apagava incêndio.
+         Antes de falar de tecnologia, inventariei decisões.</p>
+      <div class="case-facts">
+        <div><span class="cota on-light">setor</span><span class="v">Mineração e petroquímica · programas de dados</span></div>
+        <div><span class="cota on-light">período</span><span class="v">2022 a 2024</span></div>
+        <div><span class="cota on-light">papel</span><span class="v">Gerente de Programas · ~25 pessoas, reporte Canadá e Índia</span></div>
+      </div>
+    </header>
+
+    <h2 data-sec="destaques"><span class="h-idx">01</span>Destaques</h2>
+    <table class="case-table">
+      <thead><tr><th>Indicador</th><th>Valor</th></tr></thead>
+      <tbody>
+        <tr><td>Primeira entrega validada pelo negócio (após 2 anos travado)</td><td class="val">6 meses</td></tr>
+        <tr><td>Lead time no núcleo de dados (itens críticos: -80%)</td><td class="val">-65%</td></tr>
+        <tr><td>Escala do desenho organizacional de dados</td><td class="val">2 → 9 squads</td></tr>
+        <tr><td>Previsibilidade de entregas</td><td class="val">+80%</td></tr>
+        <tr><td>Volumetria de entregas</td><td class="val">+20%</td></tr>
+      </tbody>
+    </table>
+
+    <h2 data-sec="contexto"><span class="h-idx">02</span>Contexto</h2>
+    <p>Dois clientes industriais de escala global, na diretoria de dados de uma consultoria
+       multinacional de tecnologia. De um lado, um programa de logística estratégico; do outro,
+       squads de produtos de dados que precisavam escalar. Coordenação entre Brasil, Canadá e Índia,
+       com ~15 pessoas no time mais crítico.</p>
+
+    <h2 data-sec="problema"><span class="h-idx">03</span>O problema</h2>
+    <p>O programa de logística estava havia 2 anos sem entregar, depois de 4 consultorias.
+       As bases viviam espalhadas em ERP, planilhas e repositórios isolados. E havia
+       <strong>14 decisões empilhadas</strong> esperando dono, 4 delas aguardando pessoas que já nem
+       estavam no projeto. Ninguém falava do elefante branco: o travamento não era técnico,
+       era de indefinição.</p>
+
+    <h2 data-sec="abordagem"><span class="h-idx">04</span>A abordagem</h2>
+    <ul>
+      <li><strong>Inventário de decisões antes de tecnologia:</strong> as 14 pendências nomeadas, com dono
+          e prazo, uma a uma.</li>
+      <li><strong>Consolidação das bases fragmentadas</strong> para consumo em BI: uma fonte, muitas visões.</li>
+      <li><strong>Organização do núcleo central de dados:</strong> cadências, papéis e absorção estruturada
+          de demandas, saindo do modo incêndio para entregas em ritmo.</li>
+      <li><strong>Desenho organizacional dos times de dados do outro cliente:</strong> ritos, papéis,
+          arquitetura escalável e agilistas formados do zero. O desenho aguentou a escala: de 2 equipes
+          para 9 squads.</li>
+      <li><strong>Autonomia como meta explícita:</strong> no final, o time tocava a operação sozinho.</li>
+    </ul>
+
+    <h2 data-sec="resultados"><span class="h-idx">05</span>Resultados</h2>
+    <p><strong>Primeira entrega validada e aprovada pelo negócio em 6 meses.</strong> Lead time
+       <strong>-65%</strong> no núcleo de dados, com itens críticos caindo 80%. No desenho que escalou
+       de 2 para 9 squads: <strong>+80% de previsibilidade e +20% de volumetria</strong> de entregas.</p>
+    <div class="case-quote">Depois de 4 consultorias, mostrei que o ponto não era tecnologia:
+       eram 14 decisões sem dono. Decisão empilhada é o gargalo mais caro que existe.</div>
+
+    <h2 data-sec="o que fica"><span class="h-idx">06</span>O que fica</h2>
+    <p>Um modelo de organização de dados que escala sem inchar, times autônomos operando as próprias
+       cadências e a lição que atravessa setores: destravar programa é, antes de tudo, destravar decisão.</p>
+  </article>
+</template>
+
+<template id="case-programas-nacionais">
+  <article class="case-article">
+    <header class="case-head">
+      <div class="cota cota-rule on-light">estudo 05 · terceiro setor</div>
+      <h1>De zero organização a 100% com baseline</h1>
+      <p class="case-standfirst">Uma organização nacional do setor de software, com programas do
+         governo federal e times espalhados pelo Brasil. Cada projeto com taxonomia própria,
+         nenhuma gestão de portfólio. Transformação da casa inteira, da estratégia à execução.</p>
+      <div class="case-facts">
+        <div><span class="cota on-light">setor</span><span class="v">Terceiro setor · programas nacionais</span></div>
+        <div><span class="cota on-light">período</span><span class="v">2023 a 2024</span></div>
+        <div><span class="cota on-light">papel</span><span class="v">Consultor de Design Organizacional</span></div>
+      </div>
+    </header>
+
+    <h2 data-sec="destaques"><span class="h-idx">01</span>Destaques</h2>
+    <table class="case-table">
+      <thead><tr><th>Indicador</th><th>Valor</th></tr></thead>
+      <tbody>
+        <tr><td>Projetos com baseline estatística (antes: zero organização)</td><td class="val">100%</td></tr>
+        <tr><td>Lead time dos projetos</td><td class="val">-30%</td></tr>
+        <tr><td>Previsibilidade, taxonomia comum e equilíbrio de carga</td><td class="val">+40%</td></tr>
+        <tr><td>NPS interno durante a reestruturação</td><td class="val">+73%</td></tr>
+        <tr><td>Ferramentas, após benchmark e racionalização</td><td class="val">99 → 21</td></tr>
+      </tbody>
+    </table>
+
+    <h2 data-sec="contexto"><span class="h-idx">02</span>Contexto</h2>
+    <p>Programas de escala nacional executados com órgãos do governo federal, cada um com regulador,
+       fases e expectativas próprias. Times distribuídos pelo país. A relação começou por mentoria;
+       a transformação da casa veio depois, com mandato completo.</p>
+
+    <h2 data-sec="problema"><span class="h-idx">03</span>O problema</h2>
+    <p>Zero organização de projetos. Sem taxonomia comum, sem baseline, sem visão de portfólio.
+       O ecossistema de ferramentas tinha crescido por acúmulo: 99 soluções, uma dívida
+       organizacional disfarçada de escolha. E a rotatividade cobrava seu preço no conhecimento da casa.</p>
+
+    <h2 data-sec="abordagem"><span class="h-idx">04</span>A abordagem</h2>
+    <ul>
+      <li><strong>Diagnóstico de 2 meses antes de qualquer receita:</strong> entrevistas qualitativas e
+          observação, com as tensões da organização como alicerce. 5 dores nomeadas, com recomendações
+          acionáveis em tecnologia, pessoas e processos.</li>
+      <li><strong>Portfólio único, da estratégia à execução:</strong> cadeias de valor mapeadas ponta a
+          ponta, gestão por fluxo e classificação de valor para qualificar e priorizar demandas.</li>
+      <li><strong>Trabalho estatístico forte:</strong> baseline por tipo e nível de tarefa, previsibilidade
+          e acompanhamento em 100% dos projetos.</li>
+      <li><strong>Racionalização do ecossistema:</strong> benchmark de mercado e corte orientado a uso
+          real, de 99 para 21 ferramentas.</li>
+      <li><strong>Mentoria dos gerentes nacionais</strong> e diagnósticos de maturidade por equipe, com
+          alavancas de evolução no tempo. IA generativa acelerando a produção de relatórios, já em 2023.</li>
+    </ul>
+
+    <h2 data-sec="resultados"><span class="h-idx">05</span>Resultados</h2>
+    <p><strong>Baseline estatística em 100% dos projetos</strong>, lead time <strong>-30%</strong>,
+       previsibilidade e equilíbrio de carga <strong>+40%</strong>. E o número de que mais me orgulho:
+       <strong>NPS interno +73%</strong> no meio de uma reestruturação. Transformação boa melhora
+       o fluxo e o clima ao mesmo tempo.</p>
+    <div class="case-quote">Ferramenta demais é dívida organizacional disfarçada de escolha:
+       99 viraram 21, e ninguém sentiu falta das outras 78.</div>
+
+    <h2 data-sec="o que fica"><span class="h-idx">06</span>O que fica</h2>
+    <p>Portfólio único operante, gerentes mentorados sustentando o método, taxonomia comum entre
+       programas e um acervo de conhecimento estruturado que reduz o custo da rotatividade.</p>
+  </article>
+</template>
+
+<template id="case-seguros-saude">
+  <article class="case-article">
+    <header class="case-head">
+      <div class="cota cota-rule on-light">estudo 06 · seguros e saúde</div>
+      <h1>A wiki que virou agente</h1>
+      <p class="case-standfirst">Numa seguradora do sistema cooperativista de saúde, o engagement
+         mais longo do quarto ato: design organizacional, foresight e IA aplicada, começando
+         onde todo desenho sério começa: pelo diagnóstico.</p>
+      <div class="case-facts">
+        <div><span class="cota on-light">setor</span><span class="v">Seguros e saúde · previdência e operações</span></div>
+        <div><span class="cota on-light">período</span><span class="v">2024 até hoje</span></div>
+        <div><span class="cota on-light">papel</span><span class="v">Consultor de Design Organizacional · via consultoria própria</span></div>
+      </div>
+    </header>
+
+    <h2 data-sec="destaques"><span class="h-idx">01</span>Destaques</h2>
+    <table class="case-table">
+      <thead><tr><th>Indicador</th><th>Valor</th></tr></thead>
+      <tbody>
+        <tr><td>Entrevistas de 1 hora no diagnóstico de entrada</td><td class="val">24</td></tr>
+        <tr><td>Times ouvidos para a blueprint da nova operação</td><td class="val">54</td></tr>
+        <tr><td>Times com previsibilidade implantada (antes: sem gestão de entregas)</td><td class="val">17</td></tr>
+        <tr><td>Frentes de planejamento com facilitadores internos formados</td><td class="val">3</td></tr>
+        <tr><td>Frentes de atuação simultâneas</td><td class="val">9</td></tr>
+      </tbody>
+    </table>
+    <p class="cota on-light">nota: resultados financeiros do cliente são reservados; este estudo
+       reporta métricas de processo, previsibilidade e transformação.</p>
+
+    <h2 data-sec="contexto"><span class="h-idx">02</span>Contexto</h2>
+    <p>Seguradora tradicional, produto de previdência precisando de ressignificação completa e
+       frentes estratégicas com dificuldade de sair da discussão teórica. Nove frentes de trabalho,
+       da estratégia ao RH, passando por futuros, operações e agilidade.</p>
+
+    <h2 data-sec="problema"><span class="h-idx">03</span>O problema</h2>
+    <p>Frentes estratégicas que não decidiam, um produto com canais em conflito e 2 anos de tentativas
+       anteriores frustradas, times sem gestão de entregas e uma área de processos presa ao desenho de
+       fluxograma, longe do cliente. E uma pergunta de fundo: como preparar a organização para cenários
+       que ainda não chegaram?</p>
+
+    <h2 data-sec="abordagem"><span class="h-idx">04</span>A abordagem</h2>
+    <ul>
+      <li><strong>Cirurgia sem exame não existe:</strong> meses de diagnóstico funcional, com 24 entrevistas
+          de 1 hora, antes de desenhar qualquer coisa.</li>
+      <li><strong>Facilitar os facilitadores:</strong> a frente estratégica inteira treinada em facilitação;
+          discussões convertidas em roadmap por visão de capacidades; agendas de diretoria conduzidas
+          até a decisão.</li>
+      <li><strong>Nova operação desenhada com 54 times:</strong> cadeia de valor do produto mapeada ponta a
+          ponta, da prospecção ao cancelamento, com blueprint operacional evolutiva e riscos revelados
+          antes de virarem incêndio.</li>
+      <li><strong>Frente de futuros:</strong> varredura de cenários locais e globais e radar de tendências
+          alimentando decisões executivas de posicionamento.</li>
+      <li><strong>Previsibilidade em 17 times</strong> que não tinham gestão de entregas, com radar de
+          maturidade autoral na 3ª geração: comportamentos desejados, não checklist de práticas.</li>
+      <li><strong>Wiki nascida pronta para IA:</strong> a base de conhecimento de métodos foi construída
+          já estruturada para agentes. Virou sistema em produção: agentes e skills com contratos de
+          qualidade de entrada e saída, versionados em repositório, acelerando relatórios estratégicos.</li>
+    </ul>
+
+    <h2 data-sec="resultados"><span class="h-idx">05</span>Resultados</h2>
+    <p>Frentes que hoje falam de resultado, impacto e cenários, com facilitadores internos sustentando
+       as agendas. Previdência com estrutura própria de planejamento, portfólio de melhorias e protótipos
+       de canal único testados no mercado. E a antevisão que virou infraestrutura:
+       <strong>quando os agentes de IA chegaram, a base de conhecimento já estava pronta.</strong></p>
+    <div class="case-quote">Cirurgia sem exame não existe: foram 24 entrevistas e 54 times mapeados
+       antes do primeiro traço da blueprint.</div>
+
+    <h2 data-sec="o que fica"><span class="h-idx">06</span>O que fica</h2>
+    <p>Facilitadores formados, radar de maturidade operante, guia de ways of working conectado à
+       cultura cooperativista e um sistema de conhecimento que trabalha sozinho. O método fica;
+       essa é a medida.</p>
+  </article>
+</template>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
