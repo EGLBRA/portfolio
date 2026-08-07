@@ -1433,20 +1433,6 @@
       hero.onload = function () { if (art) art.insertBefore(hero, art.firstChild); };
       hero.src = 'assets/img/cases/' + id + '.jpg';
 
-      var idx = order.indexOf(id);
-      var nav = document.createElement('div');
-      nav.className = 'case-next';
-      var prevId = order[(idx - 1 + order.length) % order.length];
-      var nextId = order[(idx + 1) % order.length];
-      var pT = $('.case-card[data-case="' + prevId + '"] .case-title');
-      var nT = $('.case-card[data-case="' + nextId + '"] .case-title');
-      nav.innerHTML =
-        '<button data-go="' + prevId + '"><span class="cota">← estudo anterior</span><span class="nx">' + (pT ? pT.textContent : '') + '</span></button>' +
-        '<button data-go="' + nextId + '" class="next"><span class="cota">próximo estudo →</span><span class="nx">' + (nT ? nT.textContent : '') + '</span></button>';
-      art.appendChild(nav);
-      $$('button[data-go]', nav).forEach(function (b) {
-        b.addEventListener('click', function () { open(b.getAttribute('data-go'), true); });
-      });
 
       if (caseLabel) {
         var card = $('.case-card[data-case="' + id + '"] .case-title');
