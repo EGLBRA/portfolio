@@ -1520,14 +1520,18 @@
   (function filtroCasos() {
     var bts = document.querySelectorAll('.cf-btn');
     if (!bts.length) return;
+    function aplica(f) {
+      document.querySelectorAll('.case-card').forEach(function (c) {
+        var ok = f === 'todos' || c.getAttribute('data-cat') === f;
+        c.classList.toggle('oculto', !ok);
+      });
+    }
     bts.forEach(function (b) {
       b.addEventListener('click', function () {
         bts.forEach(function (x) { x.classList.toggle('on', x === b); });
-        var f = b.getAttribute('data-f');
-        document.querySelectorAll('.case-card').forEach(function (c) {
-          var ok = f === 'todos' || c.getAttribute('data-cat') === f;
-          c.classList.toggle('oculto', !ok);
-        });
+        aplica(b.getAttribute('data-f'));
       });
     });
+    var on = document.querySelector('.cf-btn.on');
+    if (on) aplica(on.getAttribute('data-f'));
   })();
