@@ -696,7 +696,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .email-link::after { content: ''; position: absolute; left: 0; bottom: -6px; height: 2px; width: 100%; background: var(--txt-dark); transform-origin: right; transition: transform .45s var(--ease-out), background .3s; }
 .email-link:hover { color: var(--blue); }
 .email-link:hover::after { background: var(--blue); transform: scaleX(0); transform-origin: left; }
-.contato-links { display: flex; flex-wrap: wrap; gap: 2.25rem; margin-top: 5.37rem; }
+.contato-links { display: flex; flex-wrap: wrap; gap: 2.25rem; margin-top: 5.38rem; }
 .contato-links a {
   font-family: var(--mono); font-size: .625rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase;
   color: var(--muted-light); display: inline-flex; align-items: center; gap: .6rem;
@@ -747,7 +747,7 @@ footer { background: var(--paper-3); color: var(--txt-dark); border-top: 1px sol
 .case-article { max-width: 860px; margin: 0 auto; padding: 8.5rem var(--pad) 6rem; }
 .case-article .case-head { margin-bottom: 3.5rem; }
 .case-article .case-head .cota-rule { margin-bottom: 1.75rem; }
-.case-article h1 { font-size: clamp(2rem, 5vw, 5.375rem); font-weight: 700; letter-spacing: -0.035em; line-height: 1.05; margin-bottom: 1.25rem; }
+.case-article h1 { font-size: clamp(2rem, 5vw, 5.385rem); font-weight: 700; letter-spacing: -0.035em; line-height: 1.05; margin-bottom: 1.25rem; }
 .case-article .case-standfirst { font-size: clamp(1rem, 1.5vw, 1.125rem); color: #45423d; max-width: 62ch; }
 .case-facts { display: flex; flex-wrap: wrap; gap: 2.5rem; margin-top: 2.25rem; padding-top: 1.5rem; border-top: 1px solid var(--line-light); }
 .case-facts div { display: flex; flex-direction: column; gap: .3rem; }
@@ -1057,7 +1057,7 @@ footer { background: var(--paper-3); color: var(--txt-dark); border-top: 1px sol
 
 /* respiro menor no fim da pagina */
 #contato { padding: clamp(2.25rem, 5vh, 3.5rem) 0 clamp(6.5rem, 15vh, 10rem); }
-#onde-passei { padding: clamp(3rem, 6vh, 5.37rem) 0 clamp(1.25rem, 2.75vh, 1.75rem); }
+#onde-passei { padding: clamp(3rem, 6vh, 5.38rem) 0 clamp(1.25rem, 2.75vh, 1.75rem); }
 .op-head { margin-bottom: clamp(1rem, 2.25vh, 1.5rem); }
 footer { padding: .9rem 0; }
 
