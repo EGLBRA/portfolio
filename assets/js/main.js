@@ -1452,6 +1452,15 @@
       return true;
     }
 
+    var NUM = { 'adquirencia': '01', 'pd-beleza': '02', 'dados-industria': '03',
+      'programas-nacionais': '04', 'previdencia': '05', 'simulacao-gpu': '06',
+      'esteira-dados': '07', 'okrs-horizontais': '08', 'projeto-estrela': '09',
+      'agil-rh': '10', 'onboarding-cx': '11', 'semana-inovacao': '12',
+      'diagnostico-rh': '13', 'radar-mudanca': '14', 'pizza-agil': '15',
+      'guia-wow': '16', 'ia-processos': '17' };
+    var SLUG = {};
+    Object.keys(NUM).forEach(function (k) { SLUG[NUM[k]] = k; });
+
     function open(id, keepOpen) {
       if (!build(id)) return;
       current = id;
@@ -1464,7 +1473,7 @@
       scrollBox.scrollTop = 0;
       if (progress) progress.style.width = '0%';
       if (secLabel) secLabel.textContent = 'resumo';
-      try { history.replaceState(null, '', '#estudo-' + id); } catch (err) {}
+      try { history.replaceState(null, '', '#estudo-' + (NUM[id] || id)); } catch (err) {}
     }
 
     function close() {
@@ -1492,7 +1501,8 @@
     }, { passive: true });
 
     if (location.hash.indexOf('#estudo-') === 0) {
-      var id0 = location.hash.replace('#estudo-', '');
+      var h0 = location.hash.replace('#estudo-', '');
+      var id0 = SLUG[h0] || h0;
       setTimeout(function () { open(id0); }, 600);
     }
   })();
