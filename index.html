@@ -10,10 +10,10 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ericleite.co/">
 <link rel="canonical" href="https://ericleite.co/">
-<meta name="version" content="5.21">
+<meta name="version" content="5.24">
 <meta name="theme-color" content="#0b0b0a">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230b0b0a'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='26' fill='%23f5f3ee' text-anchor='middle'%3EEL%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/css/styles.css?v=5.21">
+<link rel="stylesheet" href="assets/css/styles.css?v=5.24">
 </head>
 <body class="lock">
 
@@ -121,9 +121,18 @@
     </div>
     <p class="sec-intro rv">Um problema concreto e relevante, o que foi feito e o que mudou.</p>
 
+    <div class="case-filtros rv" aria-label="Filtrar estudos por tema">
+      <button class="cf-btn on" data-f="todos">Todos</button>
+      <button class="cf-btn" data-f="rh">RH e Pessoas</button>
+      <button class="cf-btn" data-f="cultura">Cultura e Mudan&ccedil;a</button>
+      <button class="cf-btn" data-f="organizacao">Organiza&ccedil;&atilde;o e Estrat&eacute;gia</button>
+      <button class="cf-btn" data-f="tecnologia">Tecnologia e Dados</button>
+      <button class="cf-btn" data-f="operacoes">Opera&ccedil;&otilde;es e Engenharia</button>
+    </div>
+
     <div class="case-grid">
 
-      <article class="case-card rv" data-case="diagnostico-rh" tabindex="0" role="button" aria-label="Abrir estudo: os tr&ecirc;s ciclos que prendiam o RH">
+      <article class="case-card rv" data-case="diagnostico-rh" data-cat="rh" tabindex="0" role="button" aria-label="Abrir estudo: os tr&ecirc;s ciclos que prendiam o RH">
         <div class="case-fig">
           <svg viewBox="0 0 320 190" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
             <circle cx="86" cy="95" r="42" opacity=".55"/>
@@ -149,7 +158,7 @@
         <span class="case-open">Ler o estudo <span class="arr">&rarr;</span></span>
       </article>
 
-      <article class="case-card rv" data-case="onboarding-cx" tabindex="0" role="button" aria-label="Abrir estudo: experi&ecirc;ncia do colaborador">
+      <article class="case-card rv" data-case="onboarding-cx" data-cat="rh" tabindex="0" role="button" aria-label="Abrir estudo: experi&ecirc;ncia do colaborador">
         <div class="case-fig">
           <svg viewBox="0 0 320 190" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
             <path d="M34 150 h 252" opacity=".3"/>
@@ -173,7 +182,7 @@
         <span class="case-open">Ler o estudo <span class="arr">&rarr;</span></span>
       </article>
 
-      <article class="case-card rv" data-case="pizza-agil" tabindex="0" role="button" aria-label="Abrir estudo: pizza &aacute;gil, para experimentar o &aacute;gil com os gestores">
+      <article class="case-card rv" data-case="pizza-agil" data-cat="rh" tabindex="0" role="button" aria-label="Abrir estudo: pizza &aacute;gil, para experimentar o &aacute;gil com os gestores">
         <div class="case-fig">
           <svg viewBox="0 0 320 190" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
             <circle cx="86" cy="100" r="52" opacity=".75"/>
@@ -204,7 +213,7 @@
         <span class="case-open">Ler o estudo <span class="arr">&rarr;</span></span>
       </article>
 
-      <article class="case-card rv" data-case="radar-mudanca" tabindex="0" role="button" aria-label="Abrir estudo: o radar que mostra o que a empresa quer ser">
+      <article class="case-card rv" data-case="radar-mudanca" data-cat="cultura" tabindex="0" role="button" aria-label="Abrir estudo: o radar que mostra o que a empresa quer ser">
         <div class="case-fig">
           <svg viewBox="0 0 320 190" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
             <circle cx="160" cy="95" r="22" opacity=".3"/>
@@ -231,7 +240,7 @@
         <span class="case-open">Ler o estudo <span class="arr">&rarr;</span></span>
       </article>
 
-      <article class="case-card rv" data-case="ia-processos" tabindex="0" role="button" aria-label="Abrir estudo: IA ag&ecirc;ntica, velocidade com fundamento">
+      <article class="case-card rv" data-case="ia-processos" data-cat="tecnologia" tabindex="0" role="button" aria-label="Abrir estudo: IA ag&ecirc;ntica, velocidade com fundamento">
         <div class="case-fig">
           <svg viewBox="0 0 320 190" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
             <ellipse cx="70" cy="70" rx="34" ry="10" opacity=".7"/>
@@ -266,7 +275,7 @@
         <span class="case-open">Ler o estudo <span class="arr">&rarr;</span></span>
       </article>
 
-      <article class="case-card rv" data-case="guia-wow" tabindex="0" role="button" aria-label="Abrir estudo: WOW, o guia vivo do jeito de trabalhar">
+      <article class="case-card rv" data-case="guia-wow" data-cat="cultura" tabindex="0" role="button" aria-label="Abrir estudo: WOW, o guia vivo do jeito de trabalhar">
         <div class="case-fig">
           <svg viewBox="0 0 320 190" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
             <path d="M60 40 H 170 V 150 H 60 Z" opacity=".7"/>
@@ -292,7 +301,7 @@
         <span class="case-open">Ler o estudo <span class="arr">&rarr;</span></span>
       </article>
 
-      <article class="case-card rv" data-case="agil-rh" tabindex="0" role="button" aria-label="Abrir estudo: agilidade dentro do RH">
+      <article class="case-card rv" data-case="agil-rh" data-cat="rh" tabindex="0" role="button" aria-label="Abrir estudo: agilidade dentro do RH">
         <div class="case-fig">
           <svg viewBox="0 0 320 190" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
             <circle cx="76" cy="95" r="30" opacity=".75"/>
@@ -318,7 +327,7 @@
         <span class="case-open">Ler o estudo <span class="arr">&rarr;</span></span>
       </article>
 
-      <article class="case-card rv" data-case="semana-inovacao" tabindex="0" role="button" aria-label="Abrir estudo: a semana que lançou o portal">
+      <article class="case-card rv" data-case="semana-inovacao" data-cat="rh" tabindex="0" role="button" aria-label="Abrir estudo: a semana que lançou o portal">
         <div class="case-fig">
           <svg viewBox="0 0 320 190" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
             <g opacity=".55">
@@ -348,7 +357,7 @@
         <span class="case-open">Ler o estudo <span class="arr">&rarr;</span></span>
       </article>
 
-      <article class="case-card rv" data-case="pd-beleza" tabindex="0" role="button" aria-label="Abrir estudo: fluxo unificado, a operação que se autorregula">
+      <article class="case-card rv" data-case="pd-beleza" data-cat="operacoes" tabindex="0" role="button" aria-label="Abrir estudo: fluxo unificado, a operação que se autorregula">
         <div class="case-fig">
           <svg viewBox="0 0 320 190" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
             <path d="M30 50 C 90 50, 110 92, 160 95" opacity=".55"/>
@@ -374,7 +383,7 @@
         <span class="case-open">Ler o estudo <span class="arr">→</span></span>
       </article>
 
-      <article class="case-card rv" data-case="programas-nacionais" tabindex="0" role="button" aria-label="Abrir estudo: de taxonomias próprias a um portfólio único">
+      <article class="case-card rv" data-case="programas-nacionais" data-cat="organizacao" tabindex="0" role="button" aria-label="Abrir estudo: de taxonomias próprias a um portfólio único">
         <div class="case-fig">
           <svg viewBox="0 0 320 190" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
             <g opacity=".6">
@@ -398,7 +407,7 @@
         <span class="case-open">Ler o estudo <span class="arr">→</span></span>
       </article>
 
-      <article class="case-card rv" data-case="adquirencia" tabindex="0" role="button" aria-label="Abrir estudo: do acompanhamento manual ao Pix no prazo">
+      <article class="case-card rv" data-case="adquirencia" data-cat="operacoes" tabindex="0" role="button" aria-label="Abrir estudo: do acompanhamento manual ao Pix no prazo">
         <div class="case-fig">
           <svg viewBox="0 0 320 190" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
             <path d="M28 158 H 292" opacity=".5"/>
@@ -427,7 +436,7 @@
         <span class="case-open">Ler o estudo <span class="arr">→</span></span>
       </article>
 
-      <article class="case-card rv" data-case="fidelidade" tabindex="0" role="button" aria-label="Abrir estudo: 60% da mudança em 5 meses">
+      <article class="case-card rv" data-case="fidelidade" data-cat="cultura" tabindex="0" role="button" aria-label="Abrir estudo: 60% da mudança em 5 meses">
         <div class="case-fig">
           <svg viewBox="0 0 320 190" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
             <path d="M36 150 H 130 A 16 16 0 0 0 146 134 V 96 A 16 16 0 0 1 162 80 H 250" stroke-dasharray="3 6" opacity=".7"/>
@@ -458,7 +467,7 @@
         <span class="case-open">Ler o estudo <span class="arr">→</span></span>
       </article>
 
-      <article class="case-card rv" data-case="dados-industria" tabindex="0" role="button" aria-label="Abrir estudo: o programa que estava travado havia 2 anos">
+      <article class="case-card rv" data-case="dados-industria" data-cat="tecnologia" tabindex="0" role="button" aria-label="Abrir estudo: o programa que estava travado havia 2 anos">
         <div class="case-fig">
           <svg viewBox="0 0 320 190" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
             <rect x="34" y="76" width="26" height="26" opacity=".8"/>
@@ -485,7 +494,7 @@
         <span class="case-open">Ler o estudo <span class="arr">→</span></span>
       </article>
 
-      <article class="case-card rv" data-case="previdencia" tabindex="0" role="button" aria-label="Abrir estudo: a captação era o sintoma, o problema era a saída">
+      <article class="case-card rv" data-case="previdencia" data-cat="organizacao" tabindex="0" role="button" aria-label="Abrir estudo: a captação era o sintoma, o problema era a saída">
         <div class="case-fig">
           <svg viewBox="0 0 320 190" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
             <path d="M40 44 H 280" opacity=".5"/>
@@ -511,7 +520,7 @@
         <span class="case-open">Ler o estudo <span class="arr">→</span></span>
       </article>
 
-      <article class="case-card rv" data-case="esteira-dados" tabindex="0" role="button" aria-label="Abrir estudo: de agendas cheias a uma estrutura organizada">
+      <article class="case-card rv" data-case="esteira-dados" data-cat="organizacao" tabindex="0" role="button" aria-label="Abrir estudo: de agendas cheias a uma estrutura organizada">
         <div class="case-fig">
           <svg viewBox="0 0 320 190" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
             <rect x="34" y="80" width="30" height="22" opacity=".8"/>
@@ -542,7 +551,7 @@
         <span class="case-open">Ler o estudo <span class="arr">→</span></span>
       </article>
 
-      <article class="case-card rv" data-case="okrs-horizontais" tabindex="0" role="button" aria-label="Abrir estudo: OKRs horizontais">
+      <article class="case-card rv" data-case="okrs-horizontais" data-cat="organizacao" tabindex="0" role="button" aria-label="Abrir estudo: OKRs horizontais">
         <div class="case-fig">
           <svg viewBox="0 0 320 190" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
             <path d="M46 46 h 90" opacity=".8"/>
@@ -568,7 +577,7 @@
         <span class="case-open">Ler o estudo <span class="arr">→</span></span>
       </article>
 
-      <article class="case-card rv" data-case="simulacao-gpu" tabindex="0" role="button" aria-label="Abrir estudo: uma semana em um dia e meio">
+      <article class="case-card rv" data-case="simulacao-gpu" data-cat="tecnologia" tabindex="0" role="button" aria-label="Abrir estudo: uma semana em um dia e meio">
         <div class="case-fig">
           <svg viewBox="0 0 320 190" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
             <path d="M30 150 H 290" opacity=".5"/>
@@ -593,7 +602,7 @@
         <span class="case-open">Ler o estudo <span class="arr">→</span></span>
       </article>
 
-      <article class="case-card rv" data-case="projeto-estrela" tabindex="0" role="button" aria-label="Abrir estudo: 64 produtos em 6 meses">
+      <article class="case-card rv" data-case="projeto-estrela" data-cat="operacoes" tabindex="0" role="button" aria-label="Abrir estudo: 64 produtos em 6 meses">
         <div class="case-fig">
           <svg viewBox="0 0 320 190" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
             <path d="M40 150 H 286" opacity=".5"/>
@@ -1275,7 +1284,7 @@
 
 <footer data-bar="light">
   <div class="wrap foot-row">
-    <span class="cota">©2026 <a href="https://ericleite.co" title="v5.21">ericleite.co</a> · estratégia organizacional · design de soluções</span>
+    <span class="cota">©2026 <a href="https://ericleite.co" title="v5.24">ericleite.co</a> · estratégia organizacional · design de soluções</span>
     <a id="to-top" class="cota" href="#inicio">voltar pro topo ↑</a>
   </div>
 </footer>
@@ -3209,6 +3218,6 @@
   </article>
 </template>
 
-<script src="assets/js/main.js?v=5.21" defer></script>
+<script src="assets/js/main.js?v=5.24" defer></script>
 </body>
 </html>

@@ -1511,3 +1511,23 @@
 
   runLoader();
 })();
+
+
+  /* ============================================================
+     Filtro de temas dos estudos: cada botao mostra so a sua
+     categoria; Todos devolve a grade inteira.
+     ============================================================ */
+  (function filtroCasos() {
+    var bts = document.querySelectorAll('.cf-btn');
+    if (!bts.length) return;
+    bts.forEach(function (b) {
+      b.addEventListener('click', function () {
+        bts.forEach(function (x) { x.classList.toggle('on', x === b); });
+        var f = b.getAttribute('data-f');
+        document.querySelectorAll('.case-card').forEach(function (c) {
+          var ok = f === 'todos' || c.getAttribute('data-cat') === f;
+          c.classList.toggle('oculto', !ok);
+        });
+      });
+    });
+  })();
