@@ -1,5 +1,14 @@
 # Log de Sessões — Portfolio
 
+## [2026-08-18 06:50] Book de Cases RH da Equatorial publicado em /equatorial.html - v5.61
+- Pedido: subir o book de cases da Equatorial para o GitHub, no endereço ericleite.co/equatorial.html.
+- Feito: capa do book na raiz como equatorial.html e o restante em /equatorial (7 cases, pesquisa,
+  assets e os 11 anexos referenciados). nav.js passou a calcular o prefixo, porque a capa mora na
+  raiz e as páginas na pasta. Corrigido no index.html o último resíduo do case de folha: o parágrafo
+  de Resultados dizia "tempo das contratações comuns caiu 30%" e agora diz "tempo do processo de
+  folha", coerente com a tabela.
+- Arquivos: equatorial.html, equatorial/ (novo), index.html, _log/LOG.md
+
 ## [2026-08-07 14:04] Cases em Markdown — v1
 - Pedido: gerar um Markdown de cada case e guardar em `Portfolio\Cases`.
 - Feito: extraí os 17 templates `case-*` do index.html com script Python (scratchpad) e converti para Markdown fiel: capa (título, cota do estudo, standfirst, setor/papel), seções 01 a 08 com tabela de destaques, listas, citação e notas. Conferência automática de cobertura (h2, li, linhas de tabela, citações) bateu 17/17; zero travessão, zero entidade HTML, zero tag remanescente. Índice em README.md.
