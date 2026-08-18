@@ -13,7 +13,7 @@
     { file: 'case-04.html',  menu: 'Case 4',              title: 'A distância entre o que a empresa quer ser e o que ela é' },
     { file: 'case-05.html',  menu: 'Case 5',              title: 'Modelo de Trabalho' },
     { file: 'case-06.html',  menu: 'Case 6',              title: 'A fila começa em quem decide' },
-    { file: 'case-07.html',  menu: 'Case 7',              title: 'O RH que experimentou antes de promover' },
+    { file: 'case-07.html',  menu: 'Case 7',              title: 'O RH que experimentou com a liderança' },
     { file: 'pesquisa.html', menu: 'Pesquisa de Mercado', title: 'Oito anatomias do RH' }
   ];
 
