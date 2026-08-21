@@ -148,8 +148,10 @@ a:hover { text-decoration: underline; }
 .fnota {
   margin-top: 2.6rem; padding-top: 1.2rem;
   border-top: 1px solid var(--line-light);
-  font-size: .85rem; color: var(--muted-light); max-width: 70ch;
+  display: grid; grid-template-columns: 110px 1fr; gap: 1.4rem; align-items: baseline;
 }
+.fnota p { font-size: .85rem; color: var(--muted-light); }
+@media (max-width: 640px) { .fnota { grid-template-columns: 1fr; gap: .5rem; } }
 .fvolta {
   display: inline-block; margin-top: 2.4rem;
   font-family: var(--mono); font-size: .6875rem; letter-spacing: .14em; text-transform: uppercase;
