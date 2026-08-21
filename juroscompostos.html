@@ -76,7 +76,7 @@
   }
 
   /* ===== Cabeçalho: a pergunta e as duas opções ===== */
-  header{max-width:1280px;margin:0 auto 20px;padding-right:420px}
+  header{max-width:1280px;margin:0 auto 20px;padding-right:560px}
   header h1{
     font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:600;
     letter-spacing:-.02em;line-height:1.15;
@@ -106,6 +106,7 @@
     transition:background .25s,border-color .25s,color .25s;
   }
   .ghost-btn:hover{background:var(--surface-2);border-color:var(--muted)}
+  .ghost-btn.icon{padding:.7rem;width:36px;font-size:.72rem;letter-spacing:0}
   .ghost-btn[aria-expanded="true"]{background:var(--txt);color:var(--bg);border-color:var(--txt)}
 
   /* ===== Palco ===== */
@@ -262,13 +263,40 @@
   }
   .formula b{color:var(--txt);font-weight:500}
 
+  /* corpo de texto da gaveta de ajuda */
+  .help-block h4{
+    font-family:var(--mono);font-size:.5625rem;font-weight:500;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--muted);margin-bottom:.6rem;
+  }
+  .help-block p{font-size:.84rem;line-height:1.8;color:var(--muted)}
+  .help-block p + p{margin-top:.7rem}
+  .help-block b{color:var(--txt);font-weight:600}
+  .help-block .destaque{
+    border-left:2px solid var(--yellow);padding-left:.9rem;
+  }
+  .help-lead{font-size:.98rem;line-height:1.55;color:var(--txt);font-weight:500}
+
+  /* tabela de projecao */
+  .tab-wrap{border:1px solid var(--line)}
+  table.proj{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:.64rem}
+  table.proj th{
+    font-size:.5625rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);padding:.6rem .6rem;border-bottom:1px solid var(--line);
+    position:sticky;top:0;background:var(--surface);text-align:left;
+  }
+  table.proj th.num,table.proj td.num{text-align:right;font-variant-numeric:tabular-nums}
+  table.proj td{padding:.38rem .6rem;color:var(--muted);border-bottom:1px solid var(--line)}
+  table.proj tr:last-child td{border-bottom:none}
+  table.proj tr.passou td{color:var(--txt)}
+  table.proj tr.agora td{background:var(--yellow);color:var(--yellow-ink);font-weight:500}
+
   /* ===== Rodapé ===== */
   footer{
     max-width:1280px;margin:2rem auto .6rem;
     border-top:1px solid var(--line);padding-top:1.3rem;
   }
-  /* mesma linha: copyleft a esquerda, credito a direita */
-  .foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.75rem}
+  /* uma frase so, a esquerda, com o copyleft no fim */
+  .foot-row{display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;gap:.7rem}
   .footer-credit{
     font-family:var(--mono);font-size:.5625rem;font-weight:500;
     letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
@@ -297,7 +325,7 @@
   }
   .footer-disclaimer[hidden]{display:none}
 
-  @media (max-width:1120px){
+  @media (max-width:1240px){
     header{padding-right:0;margin-top:60px}
   }
   @media (max-width:980px){
@@ -312,6 +340,8 @@
     <button id="playBtn" type="button">Play</button>
     <button id="resetBtn" class="secondary" type="button">Reset</button>
   </div>
+  <button id="tabBtn" class="ghost-btn" type="button" aria-expanded="false" aria-controls="tabela">Tabela</button>
+  <button id="helpBtn" class="ghost-btn icon" type="button" aria-expanded="false" aria-controls="help" title="O que são juros compostos?" aria-label="O que são juros compostos?">?</button>
   <button id="configBtn" class="ghost-btn" type="button" aria-expanded="false" aria-controls="config">Configurar</button>
   <button id="themeBtn" class="ghost-btn" type="button" title="Alternar tema claro e escuro">Tema claro</button>
 </div>
@@ -325,7 +355,7 @@
     </div>
     <div class="opt">
       <span class="tag">Escolha 2</span>
-      <span class="txt" id="leadOpt2"><b>R$ 0,01</b> dobrando todo dia, durante 30 dias.</span>
+      <span class="txt" id="leadOpt2"><b>R$ 0,01</b> dobrando todo dia, até o dia 31.</span>
     </div>
   </div>
 </header>
@@ -343,8 +373,8 @@
 
     <div class="center">
       <div class="day-box">
-        <div class="num" id="dayNum">0</div>
-        <div class="of" id="dayOf">de 30 dias</div>
+        <div class="num" id="dayNum">1</div>
+        <div class="of" id="dayOf">de 31 dias</div>
       </div>
       <div class="day-progress"><i id="dayBar"></i></div>
 
@@ -413,10 +443,10 @@
 
 <footer>
   <div class="foot-row">
+    <span class="footer-credit">por Eric Leite e Luciano da Silva - 2026</span>
     <a id="copyleftBtn" class="copyleft-link" href="#copyleftText" role="button" aria-expanded="false" aria-controls="copyleftText">
       <span class="copyleft-mark">©</span> Copyleft <span class="arr">↗</span>
     </a>
-    <span class="footer-credit">por Eric Leite e Luciano da Silva - 2026</span>
   </div>
   <p class="footer-disclaimer" id="copyleftText" hidden>
     Copyleft. Você pode usar, copiar, estudar, modificar e redistribuir esta página
@@ -427,6 +457,71 @@
 </footer>
 
 <div class="scrim" id="scrim"></div>
+
+<aside class="config" id="tabela" aria-label="Projecao dia a dia">
+  <div class="config-head">
+    <span class="kicker">Projeção dia a dia</span>
+    <button class="config-x" id="tabClose" type="button">Fechar</button>
+  </div>
+  <div class="help-block">
+    <p id="tabResumo">.</p>
+  </div>
+  <div class="tab-wrap">
+    <table class="proj">
+      <thead><tr><th>Dia</th><th class="num">Valor</th><th class="num">Ganho do dia</th></tr></thead>
+      <tbody id="tabBody"></tbody>
+    </table>
+  </div>
+</aside>
+
+<aside class="config" id="help" aria-label="O que são juros compostos">
+  <div class="config-head">
+    <span class="kicker">O que são juros compostos</span>
+    <button class="config-x" id="helpClose" type="button">Fechar</button>
+  </div>
+
+  <div class="help-block">
+    <p class="help-lead">É quando o seu dinheiro rende, e depois o rendimento também rende.</p>
+  </div>
+
+  <div class="help-block">
+    <h4>Juros simples</h4>
+    <p>Você ganha sempre sobre o que colocou. R$ 100 a 10% ao ano rendem
+    <b>R$ 10 no primeiro ano, R$ 10 no segundo, R$ 10 no terceiro</b>. Sempre os mesmos R$ 10.</p>
+  </div>
+
+  <div class="help-block">
+    <h4>Juros compostos</h4>
+    <p>Você ganha sobre tudo o que já tem. No primeiro ano, R$ 10. No segundo, os 10% incidem
+    sobre R$ 110 e viram <b>R$ 11</b>. No terceiro, sobre R$ 121, e viram <b>R$ 12,10</b>.</p>
+    <p>Parece pouco. É essa diferença minúscula, repetida muitas vezes, que faz a curva
+    virar para cima.</p>
+  </div>
+
+  <div class="help-block">
+    <h4>A conta</h4>
+    <div class="formula">M = C × (1 + i)<sup>n</sup></div>
+    <p><b>C</b> é quanto você começou. <b>i</b> é a taxa de cada período.
+    <b>n</b> é quantos períodos passaram. <b>M</b> é quanto você termina.</p>
+    <p>No ajuste inicial desta página, C = R$ 0,01 e i = 100% ao dia. Como (1 + 100%) = 2,
+    o dinheiro dobra. Do dia 1 ao dia 31 são 30 dobras: 0,01 × 2<sup>30</sup> = <b>R$ 10.737.418,24</b>.</p>
+  </div>
+
+  <div class="help-block destaque">
+    <h4>O detalhe que engana todo mundo</h4>
+    <p>No dia 27 você ainda tem <b>R$ 671 mil</b>. Nos quatro dias seguintes, salta para
+    <b>R$ 10,7 milhões</b>. O crescimento parece lento por muito tempo e explode no fim.
+    Por isso <b>o tempo pesa mais que o valor inicial</b>.</p>
+  </div>
+
+  <div class="help-block">
+    <h4>Um aviso honesto</h4>
+    <p>100% ao dia não existe em investimento nenhum. A taxa aqui é absurda de propósito,
+    para a história caber em um mês. Na vida real os juros compostos são bem mais lentos,
+    e é exatamente por isso que começar cedo faz tanta diferença.</p>
+  </div>
+</aside>
+
 <aside class="config" id="config" aria-label="Board de configuração">
   <div class="config-head">
     <span class="kicker">Configuração</span>
@@ -446,8 +541,8 @@
   </div>
 
   <div class="ctrl">
-    <label><span>Duração</span> <b id="dLbl">30 dias</b></label>
-    <input type="range" id="days" min="10" max="60" step="1" value="30">
+    <label><span>Duração</span> <b id="dLbl">31 dias</b></label>
+    <input type="range" id="days" min="10" max="60" step="1" value="31">
   </div>
 
   <div class="ctrl">
@@ -588,7 +683,10 @@
 
   // ---------- estado ----------
   const state = { v0:0.01, f:2, days:30, speed:1.5, t:0, playing:false };
-  function valueAt(t){ return state.v0 * Math.pow(state.f, t); }
+  // t sao "dobras decorridas" e so conta inteiro: no dia 1 nao houve dobra nenhuma,
+  // a primeira acontece ao virar o dia 2. Nada de crescimento continuo dentro do dia.
+  function valorNoDia(dia){ return state.v0 * Math.pow(state.f, dia - 1); }
+  function diaAtual(){ return Math.floor(state.t) + 1; }
 
   const playBtn = $("playBtn");
 
@@ -609,9 +707,9 @@
     // a opção 2, dita por extenso no cabeçalho
     $("leadOpt2").innerHTML = "<b>" + fmtBRL.format(state.v0) + "</b> " +
       (dobra ? "dobrando" : "multiplicando por " + fmtNum.format(state.f)) +
-      " todo dia, durante " + state.days + " dias.";
+      " todo dia, até o dia " + state.days + ".";
 
-    if(state.t > state.days) state.t = state.days;
+    if(state.t > state.days - 1) state.t = state.days - 1;
     render(true);
   }
   ["factor","days","speed","v0"].forEach(id => $(id).addEventListener("input", readParams));
@@ -621,7 +719,7 @@
   });
 
   playBtn.addEventListener("click", () => {
-    if(state.t >= state.days){ state.t = 0; clearRight(); }
+    if(state.t >= state.days - 1){ state.t = 0; clearRight(); }
     state.playing = !state.playing;
     playBtn.textContent = state.playing ? "Pausa" : "Play";
   });
@@ -726,12 +824,13 @@
 
     const padL = 82, padR = 18, padT = 16, padB = 40;
     const iw = W - padL - padR, ih = H - padT - padB;
-    const days = state.days;
-    const vNow = valueAt(Math.min(state.t, days));
+    const days = state.days, tMax = Math.max(1, days - 1);
+    const diaHoje = Math.min(diaAtual(), days);
+    const vNow = valorNoDia(diaHoje);
     const vMax = Math.max(MILLION * 1.12, vNow * 1.25);
     const vMin = Math.max(state.v0, 0.01);
 
-    const X = t => padL + (t / days) * iw;
+    const X = t => padL + (t / tMax) * iw;
     let Y, yTicks = [];
     if(scaleMode === "lin"){
       Y = v => padT + ih - (Math.max(v,0) / vMax) * ih;
@@ -755,8 +854,8 @@
     }
     const xStep = Math.max(1, Math.round(niceStep(days / 6)));
     cctx.textAlign = "center"; cctx.textBaseline = "top";
-    for(let d = 0; d <= days; d += xStep){
-      const xx = X(d);
+    for(let d = 1; d <= days; d += xStep){
+      const xx = X(d - 1);
       cctx.fillStyle = T.axisInk;
       cctx.fillText(String(d), xx, padT + ih + 10);
       cctx.strokeStyle = T.gridSoft;
@@ -777,21 +876,21 @@
       cctx.fillText("R$ 1 MILHÃO", W - padR - 4, yM - 5);
     }
 
-    const stepT = days / Math.max(60, iw / 2);
-    if(state.t > 0){
+    // liga os pontos dia a dia: o valor so muda quando o dia vira
+    if(diaHoje > 1){
       cctx.strokeStyle = T.yellow; cctx.lineWidth = 2;
+      cctx.lineJoin = "round";
       cctx.beginPath();
-      for(let t = 0; t <= state.t + stepT*0.5; t += stepT){
-        const tt = Math.min(t, state.t);
-        const yy = Math.max(padT - 2, Y(valueAt(tt)));
-        t === 0 ? cctx.moveTo(X(tt), yy) : cctx.lineTo(X(tt), yy);
+      for(let d = 1; d <= diaHoje; d++){
+        const yy = Math.max(padT - 2, Y(valorNoDia(d)));
+        d === 1 ? cctx.moveTo(X(d - 1), yy) : cctx.lineTo(X(d - 1), yy);
       }
       cctx.stroke();
     }
 
-    const dCross = Math.log(MILLION / state.v0) / Math.log(state.f);
-    if(dCross > 0 && dCross <= Math.min(state.t, days)){
-      const xx = X(dCross);
+    const diaCruz = Math.ceil(Math.log(MILLION / state.v0) / Math.log(state.f)) + 1;
+    if(diaCruz > 1 && diaCruz <= Math.min(diaHoje, days)){
+      const xx = X(diaCruz - 1);
       cctx.strokeStyle = T.yellowSoft; cctx.lineWidth = 1;
       cctx.setLineDash([3,4]);
       cctx.beginPath(); cctx.moveTo(xx, yM); cctx.lineTo(xx, padT + ih); cctx.stroke();
@@ -799,19 +898,19 @@
       cctx.fillStyle = T.yellow;
       cctx.textAlign = xx > W - 160 ? "right" : "left";
       cctx.textBaseline = "bottom";
-      cctx.fillText("CRUZA NO DIA " + fmtNum.format(dCross).replace(",00",""), xx + (xx > W - 160 ? -6 : 6), padT + ih - 6);
+      cctx.fillText("CRUZA NO DIA " + diaCruz, xx + (xx > W - 160 ? -6 : 6), padT + ih - 6);
     }
 
-    const yNow = Math.max(padT - 2, Y(valueAt(state.t)));
-    cctx.beginPath(); cctx.arc(X(state.t), yNow, 5, 0, Math.PI*2);
+    const yNow = Math.max(padT - 2, Y(vNow));
+    cctx.beginPath(); cctx.arc(X(diaHoje - 1), yNow, 5, 0, Math.PI*2);
     cctx.fillStyle = T.yellow; cctx.fill();
     cctx.lineWidth = 2; cctx.strokeStyle = T.ring; cctx.stroke();
 
     if(hoverT !== null){
-      const xx = X(hoverT);
+      const xx = X(hoverT - 1);
       cctx.strokeStyle = T.crosshair; cctx.lineWidth = 1;
       cctx.beginPath(); cctx.moveTo(xx, padT); cctx.lineTo(xx, padT + ih); cctx.stroke();
-      const yh = Math.max(padT - 2, Y(valueAt(hoverT)));
+      const yh = Math.max(padT - 2, Y(valorNoDia(hoverT)));
       cctx.beginPath(); cctx.arc(xx, yh, 4.5, 0, Math.PI*2);
       cctx.fillStyle = T.dotFill; cctx.fill();
       cctx.lineWidth = 2; cctx.strokeStyle = T.dotRing; cctx.stroke();
@@ -821,9 +920,12 @@
   chartCanvas.addEventListener("mousemove", ev => {
     const rect = chartCanvas.getBoundingClientRect();
     const padL = 82, padR = 18, iw = rect.width - padL - padR;
-    const t = Math.max(0, Math.min(Math.min(state.t, state.days), (ev.clientX - rect.left - padL) / iw * state.days));
-    hoverT = t;
-    chartTip.innerHTML = "Dia " + fmtNum.format(t).replace(",00","") + " &nbsp;<b>" + fmtBRL.format(valueAt(t)) + "</b>";
+    const tMax = Math.max(1, state.days - 1);
+    const bruto = (ev.clientX - rect.left - padL) / iw * tMax;
+    // gruda no dia inteiro mais proximo, ate o dia ja percorrido
+    const dia = Math.max(1, Math.min(Math.min(diaAtual(), state.days), Math.round(bruto) + 1));
+    hoverT = dia;
+    chartTip.innerHTML = "Dia " + dia + " &nbsp;<b>" + fmtBRL.format(valorNoDia(dia)) + "</b>";
     chartTip.style.display = "block";
     const host = chartCanvas.parentElement;
     const box = host.getBoundingClientRect();
@@ -836,9 +938,32 @@
   });
   window.addEventListener("resize", drawChart);
 
+  // ---------- tabela de projecao ----------
+  let ultimoDiaNaTabela = -1;
+  function montarTabela(){
+    const diaAtual = Math.floor(state.t) + 1;
+    const linhas = [];
+    for(let n = 1; n <= state.days; n++){
+      const v = valorNoDia(n);
+      const ganho = n === 1 ? null : v - valorNoDia(n - 1);
+      const cls = [];
+      if(v >= MILLION) cls.push("passou");
+      if(n === diaAtual) cls.push("agora");
+      linhas.push('<tr class="' + cls.join(" ") + '"><td>' + n + '</td><td class="num">' +
+                  fmtBRL.format(v) + '</td><td class="num">' +
+                  (ganho === null ? "&mdash;" : fmtBRL.format(ganho)) + '</td></tr>');
+    }
+    $("tabBody").innerHTML = linhas.join("");
+    $("tabResumo").innerHTML = "Come\u00e7a em <b>" + fmtBRL.format(state.v0) +
+      "</b> no dia 1 e termina em <b>" + fmtBRL.format(valorNoDia(state.days)) +
+      "</b> no dia " + state.days + ".";
+    ultimoDiaNaTabela = diaAtual;
+  }
+
   // ---------- render ----------
   function render(force){
-    const value = valueAt(state.t);
+    const dia = diaAtual();
+    const value = valorNoDia(dia);
     const balls = Math.floor(value / unit);
     fillTo(balls);
 
@@ -847,12 +972,14 @@
       ? "nem 1 bolinha de " + fmtBRL.format(unit)
       : fmtInt.format(balls) + " bolinha" + (balls>1?"s":"") + " de " + fmtBRL.format(unit);
 
-    $("dayNum").textContent = Math.floor(state.t);
-    $("dayBar").style.width = (state.t / state.days * 100).toFixed(1) + "%";
+    $("dayNum").textContent = dia;
+    $("dayBar").style.width = (state.t / Math.max(1, state.days - 1) * 100).toFixed(1) + "%";
 
     updateFace(value);
     updateOverflow(value);
     drawChart();
+    // a tabela so se refaz quando o dia vira, nao a cada quadro
+    if($("tabela").classList.contains("on") && dia !== ultimoDiaNaTabela) montarTabela();
   }
 
   // ---------- loop ----------
@@ -863,8 +990,8 @@
     lastTs = ts;
     if(state.playing){
       state.t += dt * state.speed;
-      if(state.t >= state.days){
-        state.t = state.days;
+      if(state.t >= state.days - 1){
+        state.t = state.days - 1;
         state.playing = false;
         playBtn.textContent = "Play";
       }
@@ -874,18 +1001,28 @@
   }
 
   // ---------- board de configuração ----------
-  const configBox = $("config"), scrim = $("scrim"), configBtn = $("configBtn");
-  function setConfig(open){
-    configBox.classList.toggle("on", open);
-    scrim.classList.toggle("on", open);
-    configBtn.setAttribute("aria-expanded", open ? "true" : "false");
+  const scrim = $("scrim");
+  const gavetas = [
+    { box:$("config"), btn:$("configBtn"), fechar:$("configClose") },
+    { box:$("help"),   btn:$("helpBtn"),   fechar:$("helpClose")   },
+    { box:$("tabela"), btn:$("tabBtn"),    fechar:$("tabClose")    }
+  ];
+  // abrir uma fecha a outra
+  function abrirGaveta(alvo){
+    gavetas.forEach(g => {
+      const on = g.box === alvo;
+      g.box.classList.toggle("on", on);
+      g.btn.setAttribute("aria-expanded", on ? "true" : "false");
+    });
+    scrim.classList.toggle("on", !!alvo);
+    if(alvo === $("tabela")) montarTabela();
   }
-  configBtn.addEventListener("click", () => setConfig(!configBox.classList.contains("on")));
-  $("configClose").addEventListener("click", () => setConfig(false));
-  scrim.addEventListener("click", () => setConfig(false));
-  document.addEventListener("keydown", ev => {
-    if(ev.key === "Escape" && configBox.classList.contains("on")) setConfig(false);
+  gavetas.forEach(g => {
+    g.btn.addEventListener("click", () => abrirGaveta(g.box.classList.contains("on") ? null : g.box));
+    g.fechar.addEventListener("click", () => abrirGaveta(null));
   });
+  scrim.addEventListener("click", () => abrirGaveta(null));
+  document.addEventListener("keydown", ev => { if(ev.key === "Escape") abrirGaveta(null); });
 
   // ---------- copyleft ----------
   const copyBtn = $("copyleftBtn"), copyText = $("copyleftText");

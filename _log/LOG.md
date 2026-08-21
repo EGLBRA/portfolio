@@ -1,5 +1,18 @@
 # Log de Sessões — Portfolio
 
+## [2026-08-21 10:45] /juroscompostos.html, dia 1, tabela e ajuda - v5.72
+- Pedido: rodape numa frase so com o copyleft no fim; botao "?" com explicacao simples de juros
+  compostos em menu lateral; botao de tabela abrindo a projecao; a contagem comeca no dia 1 e
+  o dia 1 nao dobra, a primeira dobra e no dia 2.
+- Feito: indexacao refeita, dia 1 = valor inicial e o valor passou a ser DISCRETO por dia
+  (antes a curva era continua e o dinheiro crescia dentro do proprio dia 1, o que estava errado);
+  duracao padrao 31 dias, fechando em R$ 10.737.418,24 como na planilha do Eric. Duas gavetas novas
+  irmas da de configuracao: Tabela (projecao dia a dia com valor e ganho do dia, dia atual
+  destacado e marcacao de quem passou do milhao) e "?" (explicacao simples, com juros simples x
+  compostos, a formula e a ressalva de que 100% ao dia nao existe). Curva do grafico agora liga
+  ponto a ponto por dia e o cruzamento do milhao virou dia inteiro (dia 28). Rodape numa linha so.
+- Arquivos: juroscompostos.html, _log/LOG.md
+
 ## [2026-08-21 10:20] /juroscompostos.html, copyleft a esquerda no rodape - v5.71
 - Pedido: o copyleft fica a esquerda, nao abaixo do rodape.
 - Feito: rodape passou a usar o mesmo .foot-row do site (flex, space-between): o link copyleft
