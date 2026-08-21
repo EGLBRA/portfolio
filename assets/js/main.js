@@ -219,7 +219,9 @@
       });
     }
 
-    var links = $$('.nav-link');
+    var links = $$('.nav-link').filter(function (l) {
+      return (l.getAttribute('href') || '').charAt(0) === '#';
+    });
     var secs = links.map(function (l) { return $(l.getAttribute('href')); });
     window.addEventListener('scroll', function () {
       var y = window.scrollY + window.innerHeight * 0.35;

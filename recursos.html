@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recursos · ericleite.co</title>
+<meta name="description" content="Ferramentas abertas de Eric Leite: simuladores e utilitários para decidir com número, e não com percepção.">
+<meta name="version" content="5.68">
+<link rel="canonical" href="https://ericleite.co/recursos.html">
+<meta name="theme-color" content="#0b0b0a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230b0b0a'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='26' fill='%23f5f3ee' text-anchor='middle'%3EEL%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/ferramentas.css?v=5.68">
+</head>
+<body>
+
+<nav class="fnav">
+  <a class="fbrand" href="index.html" aria-label="Eric Leite, voltar ao portfólio">
+    <span class="fbrand-mark">EL</span>
+    <span class="fbrand-txt">
+      <span class="fbrand-name">Eric Leite</span>
+      <span class="fbrand-sub">estratégia organizacional · design de soluções</span>
+    </span>
+  </a>
+  <div class="fnav-links">
+    <a href="index.html">Portfólio</a>
+    <a class="on" href="recursos.html" aria-current="page">Recursos</a>
+  </div>
+</nav>
+
+<main class="fwrap">
+
+  <header class="fhead">
+    <div class="cota cota-rule">ericleite.co · recursos</div>
+    <h1>Recursos</h1>
+    <p class="fintro">Ferramentas abertas, feitas para uso livre. Cada uma nasceu de uma conversa em que
+       faltava um número para decidir. Sem cadastro, sem coleta de dados: a conta acontece no seu
+       navegador e nada é enviado para lugar nenhum.</p>
+  </header>
+
+  <div class="fer-filtros" aria-label="Filtrar ferramentas por tema">
+    <button class="ff-btn on" data-f="todas">Todas</button>
+    <button class="ff-btn" data-f="financas">Finanças</button>
+  </div>
+
+  <!-- ============================================================
+       COMO ADICIONAR UMA FERRAMENTA
+       1. Copie um bloco <article class="fer-card"> inteiro.
+       2. Troque: data-cat (categoria), o número da cota, o título,
+          a linha de descrição, as tags e o href do link.
+       3. Se a categoria for nova, acrescente um botão na barra
+          .fer-filtros com o mesmo data-f da nova data-cat.
+       Nada mais precisa ser mexido: o filtro e o layout se ajustam.
+       ============================================================ -->
+
+  <section class="fer-grid">
+
+    <article class="fer-card" data-cat="financas">
+      <div class="fer-fig" aria-hidden="true">
+        <svg viewBox="0 0 320 150" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M24 126 H 296" opacity=".35"/>
+          <path d="M24 126 V 18" opacity=".35"/>
+          <path d="M32 118 L 96 110 L 160 96 L 224 72 L 288 28" stroke="#3d63e6" stroke-width="2"/>
+          <path d="M32 118 L 96 112 L 160 106 L 224 100 L 288 94" stroke-dasharray="4 4" opacity=".55"/>
+          <circle cx="288" cy="28" r="3.5" fill="#3d63e6" stroke="none"/>
+          <text x="32" y="40" font-family="JetBrains Mono, monospace" font-size="9" fill="#3d63e6" stroke="none">JUROS SOBRE JUROS</text>
+          <text x="196" y="112" font-family="JetBrains Mono, monospace" font-size="8" fill="currentColor" stroke="none" opacity=".6">SÓ APORTES</text>
+        </svg>
+      </div>
+      <div class="fer-meta">
+        <span class="cota">fer. 01 · finanças e decisão</span>
+      </div>
+      <h2 class="fer-title">Juros compostos</h2>
+      <p class="fer-line">R$ 1 milhão na mão agora, ou R$ 0,01 dobrando todo dia por 30 dias? A
+         animação roda dia a dia e mostra a curva que quase ninguém estima direito. Feita com
+         Luciano da Silva.</p>
+      <p class="fer-tags"><span>#JurosCompostos</span><span>#Animação</span><span>#EducaçãoFinanceira</span></p>
+      <a class="fer-open" href="juroscompostos.html">Abrir a ferramenta <span class="arr">→</span></a>
+    </article>
+
+    <article class="fer-card fer-slot" aria-hidden="true">
+      <div class="fer-slot-in">
+        <span class="cota">próximas ferramentas</span>
+        <p>Este espaço cresce conforme a estante enche.</p>
+      </div>
+    </article>
+
+  </section>
+
+  <p class="fnota">As ferramentas são simulações de apoio à decisão. Não constituem recomendação de
+     investimento, consultoria financeira nem promessa de resultado.</p>
+
+  <a class="fvolta" href="index.html">← voltar ao portfólio</a>
+
+</main>
+
+<footer class="ffoot">
+  <div class="ffoot-row">
+    <span class="cota">©2026 <a href="index.html">ericleite.co</a> · estratégia organizacional · design de soluções</span>
+    <span class="cota"><a href="privacidade.html">Privacidade</a> · <a href="privacidade.html#cookies">Cookies</a></span>
+  </div>
+</footer>
+
+<script>
+  (function filtroFerramentas() {
+    var bts = document.querySelectorAll('.ff-btn');
+    if (!bts.length) return;
+    function aplica(f) {
+      document.querySelectorAll('.fer-card').forEach(function (c) {
+        if (c.classList.contains('fer-slot')) return;
+        var ok = f === 'todas' || c.getAttribute('data-cat') === f;
+        c.classList.toggle('oculta', !ok);
+      });
+    }
+    bts.forEach(function (b) {
+      b.addEventListener('click', function () {
+        bts.forEach(function (x) { x.classList.toggle('on', x === b); });
+        aplica(b.getAttribute('data-f'));
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
