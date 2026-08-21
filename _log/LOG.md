@@ -1,5 +1,14 @@
 # Log de Sessões — Portfolio
 
+## [2026-08-21 11:25] /juroscompostos.html, fim da redundancia nos paineis - v5.74
+- Pedido: os paineis repetiam o que os cartoes de cima ja diziam ("escolha, escolha") e repetiam a
+  contagem de bolinhas tres vezes.
+- Feito: no topo de cada painel ficou so a etiqueta amarela (Escolha 1 / Escolha 2), no mesmo
+  padrao dos cartoes; sairam o h3 que repetia o titulo do cartao e a linha .sub acima do quadro.
+  A explicacao passou a existir uma unica vez, embaixo, e agora carrega a unidade
+  ("1.000 bolinhas de R$ 1.000,00"), acompanhando a regua de valor por bolinha.
+- Arquivos: juroscompostos.html, _log/LOG.md
+
 ## [2026-08-21 11:05] /juroscompostos.html, rodape centralizado e botao renomeado - v5.73
 - Pedido: centralizar o rodape; o botao "?" passa a se chamar "Juros compostos"; a tabela tem que
   seguir a configuracao.
