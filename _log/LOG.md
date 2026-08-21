@@ -1,5 +1,16 @@
 # Log de Sessões — Portfolio
 
+## [2026-08-21 11:05] /juroscompostos.html, rodape centralizado e botao renomeado - v5.73
+- Pedido: centralizar o rodape; o botao "?" passa a se chamar "Juros compostos"; a tabela tem que
+  seguir a configuracao.
+- Feito: .foot-row centralizado; botao renomeado (a barra ficou com Play, Reset, Tabela, Juros
+  compostos, Configurar e Tema claro, 583px, sem colidir com o titulo, folga e breakpoint
+  refeitos). Corrigida uma fragilidade real na tabela: ela so se refazia quando o dia virava, entao
+  mudanca de parametro com a gaveta aberta nao aparecia; agora readParams reconstroi a tabela
+  quando ela esta aberta. Provado no navegador: com a tabela aberta, mudar para R$ 1.000 e 15 dias
+  atualizou o resumo e o numero de linhas na hora.
+- Arquivos: juroscompostos.html, _log/LOG.md
+
 ## [2026-08-21 10:45] /juroscompostos.html, dia 1, tabela e ajuda - v5.72
 - Pedido: rodape numa frase so com o copyleft no fim; botao "?" com explicacao simples de juros
   compostos em menu lateral; botao de tabela abrindo a projecao; a contagem comeca no dia 1 e

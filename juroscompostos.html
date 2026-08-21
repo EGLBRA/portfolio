@@ -76,7 +76,7 @@
   }
 
   /* ===== Cabeçalho: a pergunta e as duas opções ===== */
-  header{max-width:1280px;margin:0 auto 20px;padding-right:560px}
+  header{max-width:1280px;margin:0 auto 20px;padding-right:700px}
   header h1{
     font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:600;
     letter-spacing:-.02em;line-height:1.15;
@@ -295,8 +295,8 @@
     max-width:1280px;margin:2rem auto .6rem;
     border-top:1px solid var(--line);padding-top:1.3rem;
   }
-  /* uma frase so, a esquerda, com o copyleft no fim */
-  .foot-row{display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;gap:.7rem}
+  /* uma frase so, centralizada, com o copyleft no fim */
+  .foot-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.7rem}
   .footer-credit{
     font-family:var(--mono);font-size:.5625rem;font-weight:500;
     letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
@@ -325,7 +325,7 @@
   }
   .footer-disclaimer[hidden]{display:none}
 
-  @media (max-width:1240px){
+  @media (max-width:1420px){
     header{padding-right:0;margin-top:60px}
   }
   @media (max-width:980px){
@@ -341,7 +341,7 @@
     <button id="resetBtn" class="secondary" type="button">Reset</button>
   </div>
   <button id="tabBtn" class="ghost-btn" type="button" aria-expanded="false" aria-controls="tabela">Tabela</button>
-  <button id="helpBtn" class="ghost-btn icon" type="button" aria-expanded="false" aria-controls="help" title="O que são juros compostos?" aria-label="O que são juros compostos?">?</button>
+  <button id="helpBtn" class="ghost-btn" type="button" aria-expanded="false" aria-controls="help" title="O que são juros compostos?">Juros compostos</button>
   <button id="configBtn" class="ghost-btn" type="button" aria-expanded="false" aria-controls="config">Configurar</button>
   <button id="themeBtn" class="ghost-btn" type="button" title="Alternar tema claro e escuro">Tema claro</button>
 </div>
@@ -711,6 +711,8 @@
 
     if(state.t > state.days - 1) state.t = state.days - 1;
     render(true);
+    // parametro mudou: a tabela aberta tem que refletir na hora
+    if($("tabela").classList.contains("on")) montarTabela();
   }
   ["factor","days","speed","v0"].forEach(id => $(id).addEventListener("input", readParams));
   $("unit").addEventListener("input", () => {
