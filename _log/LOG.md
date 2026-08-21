@@ -1,5 +1,13 @@
 # Log de Sessões — Portfolio
 
+## [2026-08-21 09:35] Animação de juros compostos publicada em /juroscompostos.html - v5.67
+- Pedido: publicar no portfolio a página interativa "O que você escolheria?" para ficar em ericleite.co.
+- Feito: página única na raiz, autocontida (sem dependência de assets do site, só Google Fonts).
+  Compara R$ 1 milhão com 1 centavo dobrando por 30 dias em dois quadros de bolinhas, com curva
+  Ganhos x Dias, tema claro/escuro nos tokens do site, board de configuração em gaveta e rodapé
+  copyleft. Não foi linkada no index.html, o acesso e direto pela URL.
+- Arquivos: juroscompostos.html (novo), _log/LOG.md
+
 ## [2026-08-18 06:50] Book de Cases RH da Equatorial publicado em /equatorial.html - v5.61
 - Pedido: subir o book de cases da Equatorial para o GitHub, no endereço ericleite.co/equatorial.html.
 - Feito: capa do book na raiz como equatorial.html e o restante em /equatorial (7 cases, pesquisa,

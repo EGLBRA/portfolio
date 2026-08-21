@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O que você escolheria?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ===== Tokens: paleta ericleite.co ===== */
+  :root{
+    --sans:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;
+    --mono:'JetBrains Mono',Consolas,'Courier New',monospace;
+
+    --bg:#0b0b0a;
+    --surface:#121110;
+    --surface-2:#171614;
+    --line:#211f1c;
+    --txt:#f5f3ee;
+    --muted:#8d8a83;
+    --blue:#7d97ff;
+    --yellow:#f5c518;
+    --yellow-ink:#0b0b0a;
+    --ball:245,197,24;
+    --ball-stroke:rgba(11,11,10,.55);
+    --shine:rgba(255,255,255,.34);
+    --canvas-bg:#0e0d0c;
+    --canvas-rgb:14,13,12;
+    --grid:rgba(141,138,131,.20);
+    --grid-soft:rgba(141,138,131,.12);
+    --grid-strong:rgba(141,138,131,.42);
+    --yellow-soft:rgba(245,197,24,.40);
+    --crosshair:rgba(245,243,238,.38);
+    --ring:#0e0d0c;
+    --dot-fill:#0e0d0c;
+    --dot-ring:#f5f3ee;
+    --scrim:rgba(0,0,0,.55);
+  }
+  :root.light{
+    --bg:#f0ede8;
+    --surface:#f5f4f0;
+    --surface-2:#ece9e4;
+    --line:#d9d5cf;
+    --txt:#1a1917;
+    --muted:#6d6a64;
+    --blue:#3d63e6;
+    --yellow:#a8790a;
+    --yellow-ink:#f5f3ee;
+    --ball:224,163,10;
+    --ball-stroke:rgba(26,25,23,.42);
+    --shine:rgba(255,255,255,.62);
+    --canvas-bg:#e8e4dd;
+    --canvas-rgb:232,228,221;
+    --grid:rgba(109,106,100,.24);
+    --grid-soft:rgba(109,106,100,.14);
+    --grid-strong:rgba(109,106,100,.48);
+    --yellow-soft:rgba(168,121,10,.42);
+    --crosshair:rgba(26,25,23,.45);
+    --ring:#e8e4dd;
+    --dot-fill:#f5f4f0;
+    --dot-ring:#1a1917;
+    --scrim:rgba(26,25,23,.28);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:var(--sans);background:var(--bg);color:var(--txt);
+    min-height:100vh;padding:clamp(1.1rem,3vw,2rem);
+    transition:background .3s,color .3s;
+  }
+
+  .kicker{
+    font-family:var(--mono);font-size:.5625rem;font-weight:500;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+  }
+
+  /* ===== Cabeçalho: a pergunta e as duas opções ===== */
+  header{max-width:1280px;margin:0 auto 20px;padding-right:200px}
+  header h1{
+    font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:600;
+    letter-spacing:-.02em;line-height:1.15;
+  }
+  .options{display:flex;gap:1px;margin-top:1rem;background:var(--line);
+    border:1px solid var(--line);flex-wrap:wrap}
+  .options .opt{
+    flex:1 1 280px;background:var(--surface);padding:.9rem 1rem;
+    display:flex;align-items:baseline;gap:.75rem;
+  }
+  .options .tag{
+    font-family:var(--mono);font-size:.5625rem;font-weight:500;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--yellow-ink);background:var(--yellow);
+    padding:.3rem .55rem;white-space:nowrap;
+  }
+  .options .txt{font-size:.9rem;line-height:1.5}
+  .options .txt b{font-weight:600}
+
+  /* ===== Botões fixos do topo ===== */
+  .topbar{position:fixed;top:16px;right:clamp(1.1rem,3vw,2rem);z-index:60;display:flex;gap:.4rem}
+  .ghost-btn{
+    font-family:var(--mono);font-size:.5625rem;font-weight:500;
+    letter-spacing:.16em;text-transform:uppercase;
+    padding:.7rem 1rem;cursor:pointer;
+    background:var(--bg);color:var(--txt);
+    border:1px solid var(--line);border-radius:0;
+    transition:background .25s,border-color .25s,color .25s;
+  }
+  .ghost-btn:hover{background:var(--surface-2);border-color:var(--muted)}
+  .ghost-btn[aria-expanded="true"]{background:var(--txt);color:var(--bg);border-color:var(--txt)}
+
+  /* ===== Palco ===== */
+  .layout{display:flex;max-width:1280px;margin:0 auto;align-items:stretch;
+    background:var(--line);border:1px solid var(--line)}
+  .stage{flex:1;min-width:0;display:flex;gap:1px;align-items:stretch;background:var(--line);flex-wrap:wrap}
+  .panel{
+    flex:1 1 300px;background:var(--surface);padding:1.3rem 1rem;
+    display:flex;flex-direction:column;align-items:center;gap:.7rem;
+  }
+  .panel h3{font-size:1rem;font-weight:600;text-align:center;letter-spacing:-.01em}
+  .panel .sub{font-family:var(--mono);font-size:.5625rem;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--muted);text-align:center;line-height:1.7}
+  canvas{
+    width:100%;max-width:400px;aspect-ratio:1/1;display:block;
+    border:1px solid var(--line);background:var(--canvas-bg);
+  }
+  .big-value{font-family:var(--mono);font-size:1.25rem;font-weight:500;
+    color:var(--txt);font-variant-numeric:tabular-nums;text-align:center;letter-spacing:-.01em}
+  .balls-count{font-family:var(--mono);font-size:.5625rem;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--muted);text-align:center}
+  .overflow{display:none;flex-wrap:wrap;gap:3px;justify-content:center;align-items:center;margin-top:2px}
+  .overflow.on{display:flex}
+  .mini{width:14px;height:14px;background:var(--yellow)}
+  .mini.partial{opacity:.4}
+  .overflow-label{width:100%;text-align:center;font-family:var(--mono);font-size:.5625rem;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--yellow);margin-top:.4rem}
+
+  /* ===== Centro ===== */
+  .center{
+    flex:0 0 196px;background:var(--surface);display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:1rem;padding:1rem .6rem;
+  }
+  .day-box{text-align:center}
+  .day-box .num{font-family:var(--mono);font-size:2.8rem;font-weight:500;
+    line-height:1;font-variant-numeric:tabular-nums;color:var(--txt)}
+  .day-box .of{font-family:var(--mono);font-size:.5625rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--muted);margin-top:.45rem}
+  .day-progress{width:138px;height:3px;background:var(--line);overflow:hidden}
+  .day-progress i{display:block;height:100%;width:0%;background:var(--yellow);transition:width .12s linear}
+
+  .face-wrap{position:relative;width:122px;height:122px}
+  .face-wrap svg{width:100%;height:100%}
+  .face-line{stroke:#12110f;fill:none;stroke-linecap:round}
+  .face-dot{fill:#12110f}
+  .mood-label{font-family:var(--mono);font-size:.5625rem;font-weight:500;letter-spacing:.12em;
+    text-transform:uppercase;text-align:center;color:var(--muted);min-height:2.4em;line-height:1.6}
+
+  .face-wrap.party{animation:bounce .5s ease-in-out infinite}
+  .face-wrap.crazy{animation:crazy .35s ease-in-out infinite}
+  @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  @keyframes crazy{0%,100%{transform:rotate(-8deg) scale(1.06)}50%{transform:rotate(8deg) scale(1.12)}}
+  .confetti{position:absolute;inset:-8px;pointer-events:none;display:none}
+  .face-wrap.crazy .confetti,.face-wrap.party .confetti{display:block}
+  .confetti span{position:absolute;font-size:13px;animation:pop 1.1s ease-in-out infinite}
+  @keyframes pop{
+    0%,100%{transform:translateY(0) scale(.85);opacity:.5}
+    50%{transform:translateY(-12px) scale(1.18);opacity:1}
+  }
+  .tear{animation:drip 1.2s ease-in infinite}
+  @keyframes drip{
+    0%{opacity:0;transform:translateY(0)}
+    30%{opacity:1}
+    100%{opacity:0;transform:translateY(13px)}
+  }
+
+  /* ===== Gráfico ===== */
+  .chart-panel{
+    max-width:1280px;margin:1px auto 0;position:relative;
+    background:var(--surface);border:1px solid var(--line);padding:1.2rem;
+  }
+  .chart-head{display:flex;justify-content:space-between;align-items:center;
+    margin-bottom:1rem;flex-wrap:wrap;gap:.9rem}
+  .chart-head h3{font-size:1rem;font-weight:600;letter-spacing:-.01em}
+  .head-left{display:flex;align-items:baseline;gap:1.2rem;flex-wrap:wrap}
+  .head-right{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap}
+  .legend{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+  .legend i{display:inline-block;width:14px;height:2px;vertical-align:middle;margin-right:.45rem}
+  .legend .k-curve i{background:var(--yellow)}
+  .legend .k-goal i{background:var(--blue)}
+
+  /* Play e Reset, ao lado do gráfico */
+  .transport{display:flex;gap:0}
+  .transport button{
+    padding:.75rem 1.6rem;cursor:pointer;border-radius:0;
+    font-family:var(--mono);font-size:.625rem;font-weight:500;
+    letter-spacing:.16em;text-transform:uppercase;
+    background:var(--yellow);color:var(--yellow-ink);border:1px solid var(--yellow);
+    transition:filter .25s,background .25s,color .25s,border-color .25s;
+  }
+  .transport button:hover{filter:brightness(1.08)}
+  .transport button.secondary{
+    background:transparent;color:var(--muted);border-color:var(--line);border-left:none;
+  }
+  .transport button.secondary:hover{color:var(--txt);border-color:var(--muted);background:var(--surface-2)}
+
+  .scale-toggle{display:flex;gap:0}
+  .scale-toggle button{
+    padding:.55rem .9rem;cursor:pointer;border-radius:0;
+    font-family:var(--mono);font-size:.5625rem;font-weight:500;
+    letter-spacing:.14em;text-transform:uppercase;
+    background:transparent;color:var(--muted);border:1px solid var(--line);
+  }
+  .scale-toggle button + button{border-left:none}
+  .scale-toggle button.on{background:var(--txt);color:var(--bg);border-color:var(--txt)}
+  #chartCanvas{width:100%;height:340px;display:block;max-width:none;aspect-ratio:auto;border:none;background:transparent}
+  .chart-tip{
+    position:absolute;pointer-events:none;display:none;z-index:5;
+    background:var(--bg);border:1px solid var(--line);
+    padding:.45rem .7rem;font-family:var(--mono);font-size:.68rem;
+    color:var(--txt);white-space:nowrap;font-variant-numeric:tabular-nums;
+  }
+  .chart-tip b{color:var(--yellow);font-weight:500}
+
+  /* ===== Board de configuração ===== */
+  .scrim{
+    position:fixed;inset:0;background:var(--scrim);z-index:65;
+    opacity:0;pointer-events:none;transition:opacity .3s;
+  }
+  .scrim.on{opacity:1;pointer-events:auto}
+  .config{
+    position:fixed;top:0;right:0;bottom:0;width:min(340px,90vw);z-index:70;
+    background:var(--surface);border-left:1px solid var(--line);
+    padding:1.5rem 1.3rem 2.5rem;overflow-y:auto;
+    display:flex;flex-direction:column;gap:1.4rem;
+    transform:translateX(100%);transition:transform .32s cubic-bezier(.22,1,.36,1);
+  }
+  .config.on{transform:translateX(0)}
+  .config-head{display:flex;justify-content:space-between;align-items:center;
+    border-bottom:1px solid var(--line);padding-bottom:1rem}
+  .config-x{
+    font-family:var(--mono);font-size:.5625rem;font-weight:500;letter-spacing:.16em;
+    text-transform:uppercase;background:transparent;color:var(--muted);
+    border:1px solid var(--line);padding:.5rem .8rem;cursor:pointer;border-radius:0;
+  }
+  .config-x:hover{color:var(--txt);border-color:var(--muted)}
+  .ctrl label{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem;margin-bottom:.55rem}
+  .ctrl label span{
+    font-family:var(--mono);font-size:.5625rem;font-weight:500;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  }
+  .ctrl label b{font-family:var(--mono);font-size:.8rem;font-weight:500;color:var(--txt);font-variant-numeric:tabular-nums}
+  .ctrl input[type=range]{width:100%;accent-color:var(--yellow);cursor:pointer;height:18px}
+  .ctrl input[type=number]{
+    width:100%;padding:.6rem .7rem;border-radius:0;
+    border:1px solid var(--line);background:var(--bg);color:var(--txt);
+    font-family:var(--mono);font-size:.9rem;
+  }
+  .ctrl input[type=number]:focus{outline:none;border-color:var(--muted)}
+  .hint{font-family:var(--mono);font-size:.5625rem;letter-spacing:.1em;color:var(--muted);margin-top:.45rem}
+  .formula{
+    border:1px solid var(--line);padding:.85rem;text-align:center;
+    font-family:var(--mono);font-size:.72rem;color:var(--muted);line-height:1.6;
+  }
+  .formula b{color:var(--txt);font-weight:500}
+
+  /* ===== Rodapé ===== */
+  footer{
+    max-width:1280px;margin:2rem auto .6rem;text-align:center;
+    border-top:1px solid var(--line);padding-top:1.3rem;
+  }
+  .copyleft-btn{
+    font-family:var(--mono);font-size:.5625rem;font-weight:500;
+    letter-spacing:.16em;text-transform:uppercase;
+    background:transparent;color:var(--muted);
+    border:1px solid var(--line);border-radius:0;
+    padding:.6rem 1.1rem;cursor:pointer;
+    display:inline-flex;align-items:center;gap:.55rem;
+    transition:color .25s,border-color .25s,background .25s;
+  }
+  .copyleft-btn:hover{color:var(--txt);border-color:var(--muted)}
+  .copyleft-btn[aria-expanded="true"]{color:var(--txt);border-color:var(--muted);background:var(--surface-2)}
+  /* o C invertido: espelha o simbolo de copyright */
+  .copyleft-mark{display:inline-block;transform:scaleX(-1);font-size:.85rem;line-height:1}
+  .footer-credit{
+    font-family:var(--mono);font-size:.5625rem;font-weight:500;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:.9rem;
+  }
+  .footer-disclaimer{
+    max-width:660px;margin:1.1rem auto 0;
+    font-family:var(--mono);font-size:.5625rem;font-weight:400;
+    letter-spacing:.06em;line-height:2;color:var(--muted);
+    border:1px solid var(--line);padding:1rem 1.1rem;text-align:left;
+  }
+  .footer-disclaimer[hidden]{display:none}
+
+  @media (max-width:980px){
+    header{padding-right:0;margin-top:56px}
+    .center{flex:1 1 100%;order:-1;flex-direction:row;justify-content:space-around}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <button id="configBtn" class="ghost-btn" type="button" aria-expanded="false" aria-controls="config">Configurar</button>
+  <button id="themeBtn" class="ghost-btn" type="button" title="Alternar tema claro e escuro">Tema claro</button>
+</div>
+
+<header>
+  <h1>O que você escolheria?</h1>
+  <div class="options">
+    <div class="opt">
+      <span class="tag">Escolha 1</span>
+      <span class="txt"><b>R$ 1 milhão</b> na mão, agora, de uma vez só.</span>
+    </div>
+    <div class="opt">
+      <span class="tag">Escolha 2</span>
+      <span class="txt" id="leadOpt2"><b>R$ 0,01</b> dobrando todo dia, durante 30 dias.</span>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <section class="stage">
+
+    <div class="panel">
+      <h3>Escolha 1: R$ 1 milhão</h3>
+      <div class="sub" id="leftSub">1.000 bolinhas de R$ 1.000,00</div>
+      <canvas id="leftCanvas" width="1000" height="1000"></canvas>
+      <div class="big-value">R$ 1.000.000,00</div>
+      <div class="balls-count" id="leftBalls">1.000 bolinhas</div>
+    </div>
+
+    <div class="center">
+      <div class="day-box">
+        <div class="num" id="dayNum">0</div>
+        <div class="of" id="dayOf">de 30 dias</div>
+      </div>
+      <div class="day-progress"><i id="dayBar"></i></div>
+
+      <div class="face-wrap" id="faceWrap">
+        <div class="confetti">
+          <span style="left:-6px;top:8px">🎉</span>
+          <span style="right:-8px;top:2px;animation-delay:.2s">✨</span>
+          <span style="left:6px;bottom:-4px;animation-delay:.4s">💰</span>
+          <span style="right:2px;bottom:6px;animation-delay:.6s">🎊</span>
+          <span style="left:50%;top:-14px;animation-delay:.3s">🤑</span>
+        </div>
+        <svg viewBox="0 0 100 100">
+          <circle id="faceCircle" cx="50" cy="50" r="44" fill="#8d8a83" stroke="#12110f" stroke-width="2.5"/>
+          <g id="eyesNormal">
+            <circle class="face-dot" cx="35" cy="41" r="4.4"/>
+            <circle class="face-dot" cx="65" cy="41" r="4.4"/>
+          </g>
+          <g id="eyesHappy" style="display:none">
+            <path class="face-line" d="M 29 43 Q 35 35 41 43" stroke-width="3.4"/>
+            <path class="face-line" d="M 59 43 Q 65 35 71 43" stroke-width="3.4"/>
+          </g>
+          <g id="eyesCrazy" style="display:none">
+            <text x="35" y="47" text-anchor="middle" font-size="17" font-weight="700" fill="#0a7a3d">$</text>
+            <text x="65" y="47" text-anchor="middle" font-size="17" font-weight="700" fill="#0a7a3d">$</text>
+          </g>
+          <g id="tears" style="display:none">
+            <ellipse class="tear" cx="33" cy="52" rx="2.3" ry="3.8" fill="#7d97ff"/>
+            <ellipse class="tear" cx="67" cy="52" rx="2.3" ry="3.8" fill="#7d97ff" style="animation-delay:.5s"/>
+          </g>
+          <path id="mouth" class="face-line" d="M 30 66 Q 50 46 70 66" stroke-width="3.6"/>
+          <path id="mouthOpen" class="face-dot" d="M 30 62 Q 50 90 70 62 Q 50 68 30 62 Z" style="display:none"/>
+        </svg>
+      </div>
+      <div class="mood-label" id="moodLabel">aguardando</div>
+    </div>
+
+    <div class="panel">
+      <h3>Escolha 2: Juros compostos</h3>
+      <div class="sub" id="rightSub">começando com R$ 0,01</div>
+      <canvas id="rightCanvas" width="1000" height="1000"></canvas>
+      <div class="big-value" id="rightValue">R$ 0,01</div>
+      <div class="balls-count" id="rightBalls">nem 1 bolinha</div>
+      <div class="overflow" id="overflow"></div>
+    </div>
+
+  </section>
+</div>
+
+<section class="chart-panel">
+  <div class="chart-head">
+    <div class="head-left">
+      <h3>A curva: Ganhos (R$) × Dias</h3>
+      <div class="legend kicker">
+        <span class="k-curve"><i></i>Juros compostos</span>
+        <span class="k-goal"><i></i>R$ 1 milhão</span>
+      </div>
+    </div>
+    <div class="head-right">
+      <div class="transport">
+        <button id="playBtn" type="button">Play</button>
+        <button id="resetBtn" class="secondary" type="button">Reset</button>
+      </div>
+      <div class="scale-toggle">
+        <button id="scaleLin" class="on" type="button">Linear</button>
+        <button id="scaleLog" type="button">Log</button>
+      </div>
+    </div>
+  </div>
+  <canvas id="chartCanvas"></canvas>
+  <div class="chart-tip" id="chartTip"></div>
+</section>
+
+<footer>
+  <button id="copyleftBtn" class="copyleft-btn" type="button" aria-expanded="false" aria-controls="copyleftText">
+    <span class="copyleft-mark">©</span> Copyleft
+  </button>
+  <div class="footer-credit">por Eric Leite e Luciano da Silva - 2026</div>
+  <p class="footer-disclaimer" id="copyleftText" hidden>
+    Copyleft. Você pode usar, copiar, estudar, modificar e redistribuir esta página
+    livremente, inclusive com fins comerciais. A única condição é que as versões
+    derivadas mantenham esta mesma liberdade e preservem o crédito da origem.
+    Distribuído sem garantia de qualquer espécie.
+  </p>
+</footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="config" id="config" aria-label="Board de configuração">
+  <div class="config-head">
+    <span class="kicker">Configuração</span>
+    <button class="config-x" id="configClose" type="button">Fechar</button>
+  </div>
+
+  <div class="ctrl">
+    <label><span>Valor inicial (R$)</span></label>
+    <input type="number" id="v0" value="0.01" min="0.01" step="0.01">
+    <div class="hint">Padrão: 1 centavo</div>
+  </div>
+
+  <div class="ctrl">
+    <label><span>Multiplicação</span> <b id="fLbl">2,00x</b></label>
+    <input type="range" id="factor" min="1.05" max="3" step="0.05" value="2">
+    <div class="hint" id="fHint">+100% ao dia (dobra)</div>
+  </div>
+
+  <div class="ctrl">
+    <label><span>Duração</span> <b id="dLbl">30 dias</b></label>
+    <input type="range" id="days" min="10" max="60" step="1" value="30">
+  </div>
+
+  <div class="ctrl">
+    <label><span>Velocidade</span> <b id="sLbl">1,5 d/s</b></label>
+    <input type="range" id="speed" min="0.25" max="8" step="0.25" value="1.5">
+  </div>
+
+  <div class="ctrl">
+    <label><span>Valor por bolinha</span> <b id="uLbl">R$ 1.000</b></label>
+    <input type="range" id="unit" min="0" max="5" step="1" value="3">
+    <div class="hint" id="uHint">1.000 bolinhas = R$ 1 milhão</div>
+  </div>
+
+  <div class="formula" id="formula">
+    dia <i>n</i> = <b>0,01 × 2,00<sup>n</sup></b>
+  </div>
+</aside>
+
+<script>
+(function(){
+  "use strict";
+
+  const SIZE = 1000;
+  const UNITS = [1, 10, 100, 1000, 10000, 100000];
+  const MILLION = 1e6;
+  let BG = 0;
+
+  const $ = id => document.getElementById(id);
+  const fmtBRL = new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL"});
+  const fmtInt = new Intl.NumberFormat("pt-BR");
+  const fmtNum = new Intl.NumberFormat("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2});
+
+  function pix(r,g,b){ return (255<<24) | (b<<16) | (g<<8) | r; }
+  function rnd(base,spread){ return Math.max(0,Math.min(255, base + (Math.random()*2-1)*spread ))|0; }
+
+  // ---------- tema: uma fonte de verdade nas CSS vars ----------
+  const T = {};
+  function cvar(n){ return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
+  function refreshTheme(){
+    T.canvasBg   = cvar("--canvas-bg");
+    T.ball       = cvar("--ball").split(",").map(Number);
+    T.ballStroke = cvar("--ball-stroke");
+    T.shine      = cvar("--shine");
+    T.grid       = cvar("--grid");
+    T.gridSoft   = cvar("--grid-soft");
+    T.gridStrong = cvar("--grid-strong");
+    T.axisInk    = cvar("--muted");
+    T.blue       = cvar("--blue");
+    T.yellow     = cvar("--yellow");
+    T.yellowSoft = cvar("--yellow-soft");
+    T.crosshair  = cvar("--crosshair");
+    T.ring       = cvar("--ring");
+    T.dotFill    = cvar("--dot-fill");
+    T.dotRing    = cvar("--dot-ring");
+    const c = cvar("--canvas-rgb").split(",").map(Number);
+    BG = pix(c[0], c[1], c[2]);
+  }
+  refreshTheme();
+
+  // ---------- bolinhas ----------
+  const lctx = $("leftCanvas").getContext("2d");
+  const rctx = $("rightCanvas").getContext("2d");
+  let unit = 1000, cap = 0, side = 0, cell = 0;
+  let pixelMode = false, filled = 0, rimg = null, rbuf = null;
+
+  function paintBg(ctx){ ctx.fillStyle = T.canvasBg; ctx.fillRect(0,0,SIZE,SIZE); }
+  function ballPos(i){
+    const row = Math.floor(i / side), col = i % side;
+    return { x:(col + 0.5) * cell, y: SIZE - (row + 0.5) * cell };
+  }
+  function drawBall(ctx, i){
+    const p = ballPos(i), r = cell * 0.42;
+    ctx.fillStyle = "rgb(" + rnd(T.ball[0],10) + "," + rnd(T.ball[1],20) + "," + rnd(T.ball[2],24) + ")";
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+    ctx.fill();
+    if(cell >= 6){
+      ctx.lineWidth = Math.max(1, cell * 0.05);
+      ctx.strokeStyle = T.ballStroke;
+      ctx.stroke();
+    }
+    if(cell >= 10){
+      ctx.fillStyle = T.shine;
+      ctx.beginPath();
+      ctx.arc(p.x - r*0.32, p.y - r*0.38, r*0.26, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+  function pixelIdx(i){ return (SIZE - 1 - Math.floor(i / SIZE)) * SIZE + (i % SIZE); }
+
+  function buildLeft(){
+    paintBg(lctx);
+    if(pixelMode){
+      const img = lctx.createImageData(SIZE,SIZE);
+      const buf = new Uint32Array(img.data.buffer);
+      buf.fill(BG);
+      for(let i=0;i<cap;i++) buf[pixelIdx(i)] = pix(rnd(T.ball[0],10), rnd(T.ball[1],20), rnd(T.ball[2],24));
+      lctx.putImageData(img,0,0);
+    } else {
+      for(let i=0;i<cap;i++) drawBall(lctx, i);
+    }
+  }
+  function clearRight(){
+    filled = 0;
+    if(pixelMode){ rbuf.fill(BG); rctx.putImageData(rimg,0,0); }
+    else paintBg(rctx);
+  }
+  function fillTo(target){
+    target = Math.max(0, Math.min(cap, target));
+    if(target === filled) return;
+    if(target < filled) clearRight();
+    if(pixelMode){
+      for(let i=filled;i<target;i++) rbuf[pixelIdx(i)] = pix(rnd(T.ball[0],10), rnd(T.ball[1],20), rnd(T.ball[2],24));
+      rctx.putImageData(rimg,0,0);
+    } else {
+      for(let i=filled;i<target;i++) drawBall(rctx, i);
+    }
+    filled = target;
+  }
+  function setUnit(u){
+    unit = u;
+    cap = Math.round(MILLION / u);
+    side = Math.ceil(Math.sqrt(cap));
+    cell = SIZE / side;
+    pixelMode = cell < 2.5;
+    if(pixelMode){
+      rimg = rctx.createImageData(SIZE,SIZE);
+      rbuf = new Uint32Array(rimg.data.buffer);
+      rbuf.fill(BG);
+    } else { rimg = null; rbuf = null; }
+    buildLeft();
+    clearRight();
+    $("uLbl").textContent = "R$ " + fmtInt.format(u);
+    $("uHint").textContent = fmtInt.format(cap) + " bolinha" + (cap>1?"s":"") + " = R$ 1 milhão";
+    $("leftSub").textContent = fmtInt.format(cap) + " bolinha" + (cap>1?"s":"") + " de " + fmtBRL.format(u);
+    $("leftBalls").textContent = fmtInt.format(cap) + " bolinha" + (cap>1?"s":"");
+  }
+
+  // ---------- estado ----------
+  const state = { v0:0.01, f:2, days:30, speed:1.5, t:0, playing:false };
+  function valueAt(t){ return state.v0 * Math.pow(state.f, t); }
+
+  const playBtn = $("playBtn");
+
+  function readParams(){
+    state.v0 = Math.max(0.01, parseFloat($("v0").value) || 0.01);
+    state.f = parseFloat($("factor").value);
+    state.days = parseInt($("days").value,10);
+    state.speed = parseFloat($("speed").value);
+
+    const dobra = Math.abs(state.f - 2) < 0.001;
+    $("fLbl").textContent = fmtNum.format(state.f) + "x";
+    $("fHint").textContent = "+" + fmtInt.format(Math.round((state.f-1)*100)) + "% ao dia" + (dobra ? " (dobra)" : "");
+    $("dLbl").textContent = state.days + " dias";
+    $("sLbl").textContent = fmtNum.format(state.speed).replace(",00","") + " d/s";
+    $("dayOf").textContent = "de " + state.days + " dias";
+    $("formula").innerHTML = "dia <i>n</i> = <b>" + fmtNum.format(state.v0) + " × " + fmtNum.format(state.f) + "<sup>n</sup></b>";
+    $("rightSub").textContent = "começando com " + fmtBRL.format(state.v0);
+    // a opção 2, dita por extenso no cabeçalho
+    $("leadOpt2").innerHTML = "<b>" + fmtBRL.format(state.v0) + "</b> " +
+      (dobra ? "dobrando" : "multiplicando por " + fmtNum.format(state.f)) +
+      " todo dia, durante " + state.days + " dias.";
+
+    if(state.t > state.days) state.t = state.days;
+    render(true);
+  }
+  ["factor","days","speed","v0"].forEach(id => $(id).addEventListener("input", readParams));
+  $("unit").addEventListener("input", () => {
+    setUnit(UNITS[parseInt($("unit").value,10)]);
+    render(true);
+  });
+
+  playBtn.addEventListener("click", () => {
+    if(state.t >= state.days){ state.t = 0; clearRight(); }
+    state.playing = !state.playing;
+    playBtn.textContent = state.playing ? "Pausa" : "Play";
+  });
+  $("resetBtn").addEventListener("click", () => {
+    state.playing = false;
+    playBtn.textContent = "Play";
+    state.t = 0;
+    clearRight();
+    render(true);
+  });
+
+  // ---------- smiley ----------
+  const faceWrap = $("faceWrap"), faceCircle = $("faceCircle");
+  const mouth = $("mouth"), mouthOpen = $("mouthOpen");
+  const eyesNormal = $("eyesNormal"), eyesHappy = $("eyesHappy"), eyesCrazy = $("eyesCrazy");
+  const tears = $("tears"), moodLabel = $("moodLabel");
+
+  function updateFace(value){
+    const lo = Math.log10(Math.max(state.v0, 0.01)), hi = 6;
+    let mood = (Math.log10(Math.max(value, 0.0001)) - lo) / (hi - lo);
+    mood = Math.max(0, mood);
+    const over = value / MILLION;
+    const m = Math.min(mood, 1);
+
+    faceCircle.setAttribute("fill", "hsl(46," + (6 + m*84).toFixed(0) + "%," + (54 + m*4).toFixed(0) + "%)");
+    mouth.setAttribute("d", "M 30 66 Q 50 " + (66 + (m - 0.5) * 46).toFixed(1) + " 70 66");
+
+    const crazy = over >= 1, party = !crazy && mood >= 0.82;
+    tears.style.display      = (mood < 0.14) ? "" : "none";
+    eyesNormal.style.display = (party || crazy) ? "none" : "";
+    eyesHappy.style.display  = party ? "" : "none";
+    eyesCrazy.style.display  = crazy ? "" : "none";
+    mouth.style.display      = crazy ? "none" : "";
+    mouthOpen.style.display  = crazy ? "" : "none";
+    faceWrap.classList.toggle("party", party);
+    faceWrap.classList.toggle("crazy", crazy);
+
+    let label;
+    if(over >= 5)          label = "doida de felicidade";
+    else if(over >= 1)     label = "milionária";
+    else if(mood >= 0.82)  label = "muito feliz";
+    else if(mood >= 0.6)   label = "ficando feliz";
+    else if(mood >= 0.38)  label = "melhorando";
+    else if(mood >= 0.14)  label = "tristinha";
+    else                   label = "chorando de pobreza";
+    moodLabel.textContent = label;
+  }
+
+  // ---------- overflow ----------
+  const overflowBox = $("overflow");
+  function updateOverflow(value){
+    const quads = value / MILLION;
+    if(quads < 1){ overflowBox.classList.remove("on"); overflowBox.innerHTML = ""; return; }
+    overflowBox.classList.add("on");
+    const full = Math.floor(quads), shown = Math.min(full, 12);
+    let html = "";
+    for(let i=0;i<shown;i++) html += '<div class="mini"></div>';
+    if(quads - full > 0.05 && full < 12) html += '<div class="mini partial"></div>';
+    if(full > 12) html += '<span class="overflow-label" style="width:auto;margin:0 0 0 .3rem">+' + fmtInt.format(full-12) + '</span>';
+    html += '<div class="overflow-label">' + fmtNum.format(quads) + ' quadros da esquerda</div>';
+    overflowBox.innerHTML = html;
+  }
+
+  // ---------- gráfico ----------
+  const chartCanvas = $("chartCanvas"), chartTip = $("chartTip");
+  const cctx = chartCanvas.getContext("2d");
+  let scaleMode = "lin", hoverT = null;
+
+  $("scaleLin").addEventListener("click", () => setScale("lin"));
+  $("scaleLog").addEventListener("click", () => setScale("log"));
+  function setScale(m){
+    scaleMode = m;
+    $("scaleLin").classList.toggle("on", m === "lin");
+    $("scaleLog").classList.toggle("on", m === "log");
+    drawChart();
+  }
+
+  function fmtShort(v){
+    let div = 1, suf = "";
+    if(v >= 1e9){ div = 1e9; suf = " bi"; }
+    else if(v >= 1e6){ div = 1e6; suf = " mi"; }
+    else if(v >= 1e3){ div = 1e3; suf = " mil"; }
+    else return fmtBRL.format(v);
+    return "R$ " + fmtNum.format(v/div).replace(",00","") + suf;
+  }
+  function niceStep(raw){
+    const mag = Math.pow(10, Math.floor(Math.log10(raw)));
+    const n = raw / mag;
+    return (n <= 1 ? 1 : n <= 2 ? 2 : n <= 5 ? 5 : 10) * mag;
+  }
+
+  function drawChart(){
+    const W = chartCanvas.clientWidth, H = chartCanvas.clientHeight;
+    if(!W || !H) return;
+    const dpr = window.devicePixelRatio || 1;
+    if(chartCanvas.width !== Math.round(W*dpr) || chartCanvas.height !== Math.round(H*dpr)){
+      chartCanvas.width = Math.round(W*dpr);
+      chartCanvas.height = Math.round(H*dpr);
+    }
+    cctx.setTransform(dpr,0,0,dpr,0,0);
+    cctx.clearRect(0,0,W,H);
+
+    const padL = 82, padR = 18, padT = 16, padB = 40;
+    const iw = W - padL - padR, ih = H - padT - padB;
+    const days = state.days;
+    const vNow = valueAt(Math.min(state.t, days));
+    const vMax = Math.max(MILLION * 1.12, vNow * 1.25);
+    const vMin = Math.max(state.v0, 0.01);
+
+    const X = t => padL + (t / days) * iw;
+    let Y, yTicks = [];
+    if(scaleMode === "lin"){
+      Y = v => padT + ih - (Math.max(v,0) / vMax) * ih;
+      const step = niceStep(vMax / 5);
+      for(let v = 0; v <= vMax + step*0.01; v += step) yTicks.push(v);
+    } else {
+      const lo = Math.floor(Math.log10(vMin)), hi = Math.ceil(Math.log10(vMax));
+      Y = v => padT + ih - ((Math.log10(Math.max(v, vMin)) - lo) / (hi - lo)) * ih;
+      const every = Math.max(1, Math.ceil((hi - lo) / 8));
+      for(let e = lo; e <= hi; e += every) yTicks.push(Math.pow(10, e));
+    }
+
+    cctx.font = "500 10px 'JetBrains Mono', Consolas, monospace";
+    cctx.textBaseline = "middle";
+    for(const v of yTicks){
+      const yy = Y(v);
+      cctx.strokeStyle = T.grid; cctx.lineWidth = 1;
+      cctx.beginPath(); cctx.moveTo(padL, yy); cctx.lineTo(W - padR, yy); cctx.stroke();
+      cctx.fillStyle = T.axisInk; cctx.textAlign = "right";
+      cctx.fillText(fmtShort(v), padL - 10, yy);
+    }
+    const xStep = Math.max(1, Math.round(niceStep(days / 6)));
+    cctx.textAlign = "center"; cctx.textBaseline = "top";
+    for(let d = 0; d <= days; d += xStep){
+      const xx = X(d);
+      cctx.fillStyle = T.axisInk;
+      cctx.fillText(String(d), xx, padT + ih + 10);
+      cctx.strokeStyle = T.gridSoft;
+      cctx.beginPath(); cctx.moveTo(xx, padT); cctx.lineTo(xx, padT + ih); cctx.stroke();
+    }
+    cctx.fillStyle = T.axisInk; cctx.textAlign = "right";
+    cctx.fillText("DIAS", W - padR, padT + ih + 24);
+    cctx.strokeStyle = T.gridStrong; cctx.lineWidth = 1;
+    cctx.beginPath(); cctx.moveTo(padL, padT + ih); cctx.lineTo(W - padR, padT + ih); cctx.stroke();
+
+    const yM = Y(MILLION);
+    if(MILLION <= vMax && yM >= padT){
+      cctx.strokeStyle = T.blue; cctx.lineWidth = 1.6;
+      cctx.setLineDash([5,4]);
+      cctx.beginPath(); cctx.moveTo(padL, yM); cctx.lineTo(W - padR, yM); cctx.stroke();
+      cctx.setLineDash([]);
+      cctx.fillStyle = T.blue; cctx.textAlign = "right"; cctx.textBaseline = "bottom";
+      cctx.fillText("R$ 1 MILHÃO", W - padR - 4, yM - 5);
+    }
+
+    const stepT = days / Math.max(60, iw / 2);
+    if(state.t > 0){
+      cctx.strokeStyle = T.yellow; cctx.lineWidth = 2;
+      cctx.beginPath();
+      for(let t = 0; t <= state.t + stepT*0.5; t += stepT){
+        const tt = Math.min(t, state.t);
+        const yy = Math.max(padT - 2, Y(valueAt(tt)));
+        t === 0 ? cctx.moveTo(X(tt), yy) : cctx.lineTo(X(tt), yy);
+      }
+      cctx.stroke();
+    }
+
+    const dCross = Math.log(MILLION / state.v0) / Math.log(state.f);
+    if(dCross > 0 && dCross <= Math.min(state.t, days)){
+      const xx = X(dCross);
+      cctx.strokeStyle = T.yellowSoft; cctx.lineWidth = 1;
+      cctx.setLineDash([3,4]);
+      cctx.beginPath(); cctx.moveTo(xx, yM); cctx.lineTo(xx, padT + ih); cctx.stroke();
+      cctx.setLineDash([]);
+      cctx.fillStyle = T.yellow;
+      cctx.textAlign = xx > W - 160 ? "right" : "left";
+      cctx.textBaseline = "bottom";
+      cctx.fillText("CRUZA NO DIA " + fmtNum.format(dCross).replace(",00",""), xx + (xx > W - 160 ? -6 : 6), padT + ih - 6);
+    }
+
+    const yNow = Math.max(padT - 2, Y(valueAt(state.t)));
+    cctx.beginPath(); cctx.arc(X(state.t), yNow, 5, 0, Math.PI*2);
+    cctx.fillStyle = T.yellow; cctx.fill();
+    cctx.lineWidth = 2; cctx.strokeStyle = T.ring; cctx.stroke();
+
+    if(hoverT !== null){
+      const xx = X(hoverT);
+      cctx.strokeStyle = T.crosshair; cctx.lineWidth = 1;
+      cctx.beginPath(); cctx.moveTo(xx, padT); cctx.lineTo(xx, padT + ih); cctx.stroke();
+      const yh = Math.max(padT - 2, Y(valueAt(hoverT)));
+      cctx.beginPath(); cctx.arc(xx, yh, 4.5, 0, Math.PI*2);
+      cctx.fillStyle = T.dotFill; cctx.fill();
+      cctx.lineWidth = 2; cctx.strokeStyle = T.dotRing; cctx.stroke();
+    }
+  }
+
+  chartCanvas.addEventListener("mousemove", ev => {
+    const rect = chartCanvas.getBoundingClientRect();
+    const padL = 82, padR = 18, iw = rect.width - padL - padR;
+    const t = Math.max(0, Math.min(Math.min(state.t, state.days), (ev.clientX - rect.left - padL) / iw * state.days));
+    hoverT = t;
+    chartTip.innerHTML = "Dia " + fmtNum.format(t).replace(",00","") + " &nbsp;<b>" + fmtBRL.format(valueAt(t)) + "</b>";
+    chartTip.style.display = "block";
+    const host = chartCanvas.parentElement;
+    const box = host.getBoundingClientRect();
+    chartTip.style.left = Math.min(ev.clientX - box.left + 14, host.clientWidth - chartTip.offsetWidth - 8) + "px";
+    chartTip.style.top = (ev.clientY - box.top - 34) + "px";
+    drawChart();
+  });
+  chartCanvas.addEventListener("mouseleave", () => {
+    hoverT = null; chartTip.style.display = "none"; drawChart();
+  });
+  window.addEventListener("resize", drawChart);
+
+  // ---------- render ----------
+  function render(force){
+    const value = valueAt(state.t);
+    const balls = Math.floor(value / unit);
+    fillTo(balls);
+
+    $("rightValue").textContent = fmtBRL.format(value);
+    $("rightBalls").textContent = balls < 1
+      ? "nem 1 bolinha de " + fmtBRL.format(unit)
+      : fmtInt.format(balls) + " bolinha" + (balls>1?"s":"") + " de " + fmtBRL.format(unit);
+
+    $("dayNum").textContent = Math.floor(state.t);
+    $("dayBar").style.width = (state.t / state.days * 100).toFixed(1) + "%";
+
+    updateFace(value);
+    updateOverflow(value);
+    drawChart();
+  }
+
+  // ---------- loop ----------
+  let lastTs = null;
+  function loop(ts){
+    if(lastTs === null) lastTs = ts;
+    const dt = Math.min(0.1, (ts - lastTs) / 1000);
+    lastTs = ts;
+    if(state.playing){
+      state.t += dt * state.speed;
+      if(state.t >= state.days){
+        state.t = state.days;
+        state.playing = false;
+        playBtn.textContent = "Play";
+      }
+      render(false);
+    }
+    requestAnimationFrame(loop);
+  }
+
+  // ---------- board de configuração ----------
+  const configBox = $("config"), scrim = $("scrim"), configBtn = $("configBtn");
+  function setConfig(open){
+    configBox.classList.toggle("on", open);
+    scrim.classList.toggle("on", open);
+    configBtn.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+  configBtn.addEventListener("click", () => setConfig(!configBox.classList.contains("on")));
+  $("configClose").addEventListener("click", () => setConfig(false));
+  scrim.addEventListener("click", () => setConfig(false));
+  document.addEventListener("keydown", ev => {
+    if(ev.key === "Escape" && configBox.classList.contains("on")) setConfig(false);
+  });
+
+  // ---------- copyleft ----------
+  const copyBtn = $("copyleftBtn"), copyText = $("copyleftText");
+  copyBtn.addEventListener("click", () => {
+    const abrir = copyText.hasAttribute("hidden");
+    if(abrir) copyText.removeAttribute("hidden"); else copyText.setAttribute("hidden","");
+    copyBtn.setAttribute("aria-expanded", abrir ? "true" : "false");
+  });
+
+  // ---------- tema ----------
+  const themeBtn = $("themeBtn");
+  function applyTheme(mode){
+    document.documentElement.classList.toggle("light", mode === "light");
+    themeBtn.textContent = mode === "light" ? "Tema escuro" : "Tema claro";
+    refreshTheme();
+    setUnit(unit);
+    render(true);
+    try{ localStorage.setItem("centavo-tema", mode); }catch(e){}
+  }
+  themeBtn.addEventListener("click", function(){
+    applyTheme(document.documentElement.classList.contains("light") ? "dark" : "light");
+  });
+  var savedTheme = null;
+  try{ savedTheme = localStorage.getItem("centavo-tema"); }catch(e){}
+  if(savedTheme === "light"){
+    document.documentElement.classList.add("light");
+    themeBtn.textContent = "Tema escuro";
+    refreshTheme();
+  }
+
+  setUnit(UNITS[parseInt($("unit").value,10)]);
+  readParams();
+  render(true);
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
