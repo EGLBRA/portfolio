@@ -1,5 +1,14 @@
 # Log de Sessões — Portfolio
 
+## [2026-08-21 10:10] /juroscompostos.html, Play e Reset na barra do topo - v5.70
+- Pedido: Play e Reset ficam acima, na frente do Configurar.
+- Feito: os dois sairam do cabecalho do grafico e foram para a barra fixa do topo, antes do
+  Configurar, na mesma medida dos demais botoes (36px de altura). Isso tambem elimina a colisao
+  que eles teriam com a barra fixa ao rolar a pagina. O cabecalho do grafico ficou so com o titulo
+  e o seletor Linear/Log. Folga do header e breakpoint ajustados para a barra maior (1120px).
+  Versao saltou de 5.68 para 5.70 porque havia dois commits numerados 5.68.
+- Arquivos: juroscompostos.html, _log/LOG.md
+
 ## [2026-08-21 09:55] /juroscompostos.html, ajustes de rodape e legenda - v5.68
 - Pedido: copyleft como link (nao botao), por ultimo, depois do ano, com a setinha diagonal de link;
   a legenda do grafico sai do titulo e vai para o canto inferior direito.
