@@ -1,5 +1,12 @@
 # Log de Sessões — Portfolio
 
+## [2026-08-21 10:20] /juroscompostos.html, copyleft a esquerda no rodape - v5.71
+- Pedido: o copyleft fica a esquerda, nao abaixo do rodape.
+- Feito: rodape passou a usar o mesmo .foot-row do site (flex, space-between): o link copyleft
+  colado na borda esquerda e o credito na direita, na mesma linha. O disclaimer segue abaixo,
+  em largura cheia, quando o link e acionado.
+- Arquivos: juroscompostos.html, _log/LOG.md
+
 ## [2026-08-21 10:10] /juroscompostos.html, Play e Reset na barra do topo - v5.70
 - Pedido: Play e Reset ficam acima, na frente do Configurar.
 - Feito: os dois sairam do cabecalho do grafico e foram para a barra fixa do topo, antes do
