@@ -1453,11 +1453,11 @@
     }
 
     var NUM = { 'adquirencia': '01', 'pd-beleza': '02', 'dados-industria': '03',
-      'programas-nacionais': '04', 'previdencia': '05', 'simulacao-gpu': '06',
-      'esteira-dados': '07', 'okrs-horizontais': '08', 'projeto-estrela': '09',
-      'agil-rh': '10', 'onboarding-cx': '11', 'semana-inovacao': '12',
-      'diagnostico-rh': '13', 'radar-mudanca': '14', 'pizza-agil': '15',
-      'guia-wow': '16', 'ia-processos': '17' };
+      'programas-nacionais': '04', 'simulacao-gpu': '05', 'esteira-dados': '06',
+      'okrs-horizontais': '07', 'projeto-estrela': '08', 'agil-rh': '09',
+      'onboarding-cx': '10', 'semana-inovacao': '11', 'diagnostico-rh': '12',
+      'radar-mudanca': '13', 'pizza-agil': '14', 'guia-wow': '15',
+      'ia-processos': '16' };
     var SLUG = {};
     Object.keys(NUM).forEach(function (k) { SLUG[NUM[k]] = k; });
 
