@@ -180,9 +180,10 @@
   .chart-head{display:flex;justify-content:space-between;align-items:center;
     margin-bottom:1rem;flex-wrap:wrap;gap:.9rem}
   .chart-head h3{font-size:1rem;font-weight:600;letter-spacing:-.01em}
-  .head-left{display:flex;align-items:baseline;gap:1.2rem;flex-wrap:wrap}
   .head-right{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap}
-  .legend{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+  /* legenda no canto inferior direito, abaixo da curva */
+  .chart-foot{display:flex;justify-content:flex-end;margin-top:.5rem}
+  .legend{display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap}
   .legend i{display:inline-block;width:14px;height:2px;vertical-align:middle;margin-right:.45rem}
   .legend .k-curve i{background:var(--yellow)}
   .legend .k-goal i{background:var(--blue)}
@@ -267,23 +268,26 @@
     max-width:1280px;margin:2rem auto .6rem;text-align:center;
     border-top:1px solid var(--line);padding-top:1.3rem;
   }
-  .copyleft-btn{
-    font-family:var(--mono);font-size:.5625rem;font-weight:500;
-    letter-spacing:.16em;text-transform:uppercase;
-    background:transparent;color:var(--muted);
-    border:1px solid var(--line);border-radius:0;
-    padding:.6rem 1.1rem;cursor:pointer;
-    display:inline-flex;align-items:center;gap:.55rem;
-    transition:color .25s,border-color .25s,background .25s;
-  }
-  .copyleft-btn:hover{color:var(--txt);border-color:var(--muted)}
-  .copyleft-btn[aria-expanded="true"]{color:var(--txt);border-color:var(--muted);background:var(--surface-2)}
-  /* o C invertido: espelha o simbolo de copyright */
-  .copyleft-mark{display:inline-block;transform:scaleX(-1);font-size:.85rem;line-height:1}
   .footer-credit{
     font-family:var(--mono);font-size:.5625rem;font-weight:500;
-    letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:.9rem;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
   }
+  /* link no padrao do site: mono, caixa alta e a setinha diagonal */
+  .copyleft-link{
+    font-family:var(--mono);font-size:.5625rem;font-weight:500;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+    display:inline-flex;align-items:center;gap:.6rem;
+    margin-top:.85rem;cursor:pointer;text-decoration:none;
+    background:none;border:none;padding:0;
+    transition:color .25s;
+  }
+  .copyleft-link:hover{color:var(--txt)}
+  .copyleft-link[aria-expanded="true"]{color:var(--txt)}
+  .copyleft-link .arr{transition:transform .3s cubic-bezier(.22,1,.36,1)}
+  .copyleft-link:hover .arr{transform:translate(3px,-3px)}
+  .copyleft-link[aria-expanded="true"] .arr{transform:rotate(90deg)}
+  /* o C invertido: espelha o simbolo de copyright */
+  .copyleft-mark{display:inline-block;transform:scaleX(-1);font-size:.85rem;line-height:1}
   .footer-disclaimer{
     max-width:660px;margin:1.1rem auto 0;
     font-family:var(--mono);font-size:.5625rem;font-weight:400;
@@ -384,13 +388,7 @@
 
 <section class="chart-panel">
   <div class="chart-head">
-    <div class="head-left">
-      <h3>A curva: Ganhos (R$) × Dias</h3>
-      <div class="legend kicker">
-        <span class="k-curve"><i></i>Juros compostos</span>
-        <span class="k-goal"><i></i>R$ 1 milhão</span>
-      </div>
-    </div>
+    <h3>A curva: Ganhos (R$) × Dias</h3>
     <div class="head-right">
       <div class="transport">
         <button id="playBtn" type="button">Play</button>
@@ -403,14 +401,20 @@
     </div>
   </div>
   <canvas id="chartCanvas"></canvas>
+  <div class="chart-foot">
+    <div class="legend kicker">
+      <span class="k-curve"><i></i>Juros compostos</span>
+      <span class="k-goal"><i></i>R$ 1 milhão</span>
+    </div>
+  </div>
   <div class="chart-tip" id="chartTip"></div>
 </section>
 
 <footer>
-  <button id="copyleftBtn" class="copyleft-btn" type="button" aria-expanded="false" aria-controls="copyleftText">
-    <span class="copyleft-mark">©</span> Copyleft
-  </button>
   <div class="footer-credit">por Eric Leite e Luciano da Silva - 2026</div>
+  <a id="copyleftBtn" class="copyleft-link" href="#copyleftText" role="button" aria-expanded="false" aria-controls="copyleftText">
+    <span class="copyleft-mark">©</span> Copyleft <span class="arr">↗</span>
+  </a>
   <p class="footer-disclaimer" id="copyleftText" hidden>
     Copyleft. Você pode usar, copiar, estudar, modificar e redistribuir esta página
     livremente, inclusive com fins comerciais. A única condição é que as versões
@@ -882,7 +886,8 @@
 
   // ---------- copyleft ----------
   const copyBtn = $("copyleftBtn"), copyText = $("copyleftText");
-  copyBtn.addEventListener("click", () => {
+  copyBtn.addEventListener("click", ev => {
+    ev.preventDefault();
     const abrir = copyText.hasAttribute("hidden");
     if(abrir) copyText.removeAttribute("hidden"); else copyText.setAttribute("hidden","");
     copyBtn.setAttribute("aria-expanded", abrir ? "true" : "false");

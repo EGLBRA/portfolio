@@ -1,5 +1,13 @@
 # Log de Sessões — Portfolio
 
+## [2026-08-21 09:55] /juroscompostos.html, ajustes de rodape e legenda - v5.68
+- Pedido: copyleft como link (nao botao), por ultimo, depois do ano, com a setinha diagonal de link;
+  a legenda do grafico sai do titulo e vai para o canto inferior direito.
+- Feito: rodape na ordem credito e depois o link copyleft, no padrao .contato-links do site (mono,
+  caixa alta, setinha e hover translate(3px,-3px)); a seta gira 90 graus quando o texto abre.
+  Legenda movida para .chart-foot alinhada a direita, abaixo da curva.
+- Arquivos: juroscompostos.html, _log/LOG.md
+
 ## [2026-08-21 09:35] Animação de juros compostos publicada em /juroscompostos.html - v5.67
 - Pedido: publicar no portfolio a página interativa "O que você escolheria?" para ficar em ericleite.co.
 - Feito: página única na raiz, autocontida (sem dependência de assets do site, só Google Fonts).
